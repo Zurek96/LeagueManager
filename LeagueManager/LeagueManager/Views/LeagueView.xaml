@@ -1,0 +1,147 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="LeagueManager.Views.LeagueView"
+        mc:Ignorable="d"
+        Title="LeagueView" Height="450" Width="800" Activated="Window_Activated" Closed="Window_Closed">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="419" Margin="-1,0,0,0" VerticalAlignment="Top" Width="793" ClipToBounds="True">
+            <TabItem Header="Players" ClipToBounds="True">
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="ListView" HorizontalAlignment="Left" Height="278" Margin="19,32,0,0" VerticalAlignment="Top" Width="449">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Elo" DisplayMemberBinding="{Binding Elo}"/>
+                                <GridViewColumn Header="Achievement Score" DisplayMemberBinding="{Binding AchievementScore}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Standings" ClipToBounds="True"  >
+                <Grid Background="#FFE5E5E5">
+                    <TabControl HorizontalAlignment="Left" Height="391" VerticalAlignment="Top" Width="787">
+                        <TabItem Header="This week">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="691*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListView x:Name="DailyStandings" HorizontalAlignment="Left" Height="363" VerticalAlignment="Top" Width="689" Grid.ColumnSpan="2">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                            <GridViewColumn Header="Elo" DisplayMemberBinding="{Binding Elo}"/>
+                                            <GridViewColumn Header="GamesWon" DisplayMemberBinding="{Binding GamesWon}"/>
+                                            <GridViewColumn Header="GamesLost" DisplayMemberBinding="{Binding GamesLost}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <Button Content="Show standings" Grid.Column="1" HorizontalAlignment="Left" Margin="604,28,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click_1"/>
+                                <Button x:Name="SumUp" Content="End turn" Grid.Column="1" HorizontalAlignment="Left" Margin="604,53,0,0" VerticalAlignment="Top" Width="87" Click="SumUp_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="General">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="46*"/>
+                                    <ColumnDefinition Width="44*"/>
+                                    <ColumnDefinition Width="691*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListView x:Name="GeneralStandings" HorizontalAlignment="Left" Height="363" VerticalAlignment="Top" Width="689" Grid.ColumnSpan="3">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                            <GridViewColumn Header="Elo" DisplayMemberBinding="{Binding Elo}"/>
+                                            <GridViewColumn Header="GamesWon" DisplayMemberBinding="{Binding GeneralGamesWon}"/>
+                                            <GridViewColumn Header="GamesLost" DisplayMemberBinding="{Binding GeneralGamesLost}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Matchups" ClipToBounds="True">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="143*"/>
+                        <ColumnDefinition Width="644*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="Generate" Content="Generate" HorizontalAlignment="Left" Margin="430.833,9,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Generate_Click" Grid.Column="1"/>
+                    <ComboBox x:Name="MatchBox" HorizontalAlignment="Left" Margin="235.833,10,0,0" VerticalAlignment="Top" Width="190" Height="32" Grid.Column="1"  />
+                    <ListView x:Name="MatchupsListView" HorizontalAlignment="Left" Height="371" Margin="10,10,0,0" VerticalAlignment="Top" Width="364" Grid.ColumnSpan="2"
+                              Grid.Column="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Player 1" DisplayMemberBinding="{Binding Player1}"/>
+                                <GridViewColumn Header="Player 2" DisplayMemberBinding="{Binding Player2}"/>
+                                <GridViewColumn Header="Is Finished" DisplayMemberBinding="{Binding IsFinished}"/>
+                                <GridViewColumn Header="Winner" DisplayMemberBinding="{Binding Winner}"/>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding MatchDate}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="431,47,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Delete_Click" Grid.Column="1"/>
+                    <ComboBox x:Name="WinnerBox" HorizontalAlignment="Left" Margin="236,48,0,0" VerticalAlignment="Top" Width="190" Height="32" Grid.Column="1" />
+                    <Button x:Name="Score" Content="Winner" HorizontalAlignment="Left" Margin="431,123,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Score_Click" Grid.Column="1"/>
+                    <ComboBox x:Name="PlayerBoxList" HorizontalAlignment="Left" Margin="236,85,0,0" VerticalAlignment="Top" Width="190" Height="32" Grid.Column="1" />
+                    <Button x:Name="Absent" Content="Absent" HorizontalAlignment="Left" Margin="431,161,0,0" VerticalAlignment="Top" Width="75" Height="33" Grid.Column="1" Click="Absent_Click"/>
+                    <CheckBox x:Name="ThGbox" Content="Two-Headed Giant" Grid.Column="1" HorizontalAlignment="Left" Margin="519,18,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="ScoreCopy" Content="Score" HorizontalAlignment="Left" Margin="431,85,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Win_Click" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Achievements" ClipToBounds="True">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="143*"/>
+                        <ColumnDefinition Width="644*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="AchListView" HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="629" Margin="10,10,0,0" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Achievement Name" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Score" DisplayMemberBinding="{Binding Score}"/>
+                                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                                <GridViewColumn Header="Players who have it" DisplayMemberBinding="{Binding ListOfPlayers}"/>
+
+                            </GridView>
+                        </ListView.View>
+
+                    </ListView>
+                    <Button x:Name="AddAch" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="519,70,0,0" VerticalAlignment="Top" Width="75" Click="AddAch_Click"/>
+                    <Button x:Name="DelAch" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="519,95,0,0" VerticalAlignment="Top" Width="75" Click="DelAch_Click"/>
+                    <Button x:Name="Assign" Content="Assign" Grid.Column="1" HorizontalAlignment="Left" Margin="519,120,0,0" VerticalAlignment="Top" Width="75" Click="Assign_Click"/>
+                    <ComboBox x:Name="AchPlayers"  Grid.Column="1" HorizontalAlignment="Left" Margin="501,145,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="AchDdl"  Grid.Column="1" HorizontalAlignment="Left" Margin="501,172,0,0" VerticalAlignment="Top" Width="120"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="History">
+                <Grid Background="#FFE5E5E5" Margin="0,-1,0,1" ClipToBounds="True">
+                    <ListView x:Name="MatchupsHistory" HorizontalAlignment="Left" Height="278" Margin="19,32,0,0" VerticalAlignment="Top" Width="449">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                                <GridViewColumn Header="Winner" DisplayMemberBinding="{Binding WinnerName}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ComboBox x:Name="MatchupSelect" HorizontalAlignment="Left" Margin="508,76,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="TurnInfo" Content="Details" HorizontalAlignment="Left" Margin="657,76,0,0" VerticalAlignment="Top" Width="75" Click="TurnInfo_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Calendar" ClipToBounds="True">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox HorizontalAlignment="Left" Height="302" Margin="24,28,0,0" VerticalAlignment="Top" Width="688" />
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
