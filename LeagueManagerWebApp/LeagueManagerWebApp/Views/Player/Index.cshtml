@@ -1,0 +1,42 @@
+﻿@model LeagueManagerWebApp.ViewModels.PlayerViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-left">Name: @Model.Name</h1> <br/>
+            <h1 class="text-left">Id: @Model.Id</h1>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <h3 class="text-left">Matches Played: @Model.MatchesPlayed</h3> <br>
+            <h3 class="text-left">Matches Lost: @Model.MatchesLost</h3> <br>
+            <h3 class="text-left">Matches Won: @Model.MatchesWon</h3> <br>
+            <h3 class="text-left">Elo: @Model.Elo</h3> <br>
+            <h3 class="text-left">Last time played: @Model.LastTimePlayed</h3> <br>
+            @if (Model.MatchesPlayed != 0)
+            {
+                <h3 class="text-left">% of wins: @(Model.MatchesWon * 100 / Model.MatchesPlayed) %</h3>
+                <br>
+            }
+            else
+            {
+                <h3 class="text-left">% of wins: 0%</h3>
+            }
+        </div>
+        <div class="col">
+            <a class="text-right">Matches history</a> <br>
+            @if (Model.MatchesPlayed>0) { 
+            foreach (var elem in Model.MatchupsHistory)
+                {
+
+                }
+            }
+            </div>
+    </div>
+</div>

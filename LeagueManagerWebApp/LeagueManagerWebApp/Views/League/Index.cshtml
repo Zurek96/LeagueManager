@@ -1,0 +1,33 @@
+﻿@model List<LeagueModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form asp-controller="League" asp-action="ViewLeagueStandings" method="post">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        Winner: <br />
+                    </div>
+                    <div class="col">
+                        <select id="Name" name="Name">
+                            @foreach (var elem in Model)
+                            {
+                                <option value="@elem.Name">@elem.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <input type="submit" />
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

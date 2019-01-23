@@ -1,0 +1,48 @@
+﻿@model LeagueManagerWebApp.Models.PlayerModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlayerModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Elo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Elo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AchievementScore)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AchievementScore)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Wins)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Wins)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Losses)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Losses)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MatchesPlayed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MatchesPlayed)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

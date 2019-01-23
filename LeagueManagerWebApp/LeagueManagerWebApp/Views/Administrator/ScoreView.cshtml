@@ -1,0 +1,98 @@
+﻿@model LeagueManagerWebApp.ViewModels.ScoreViewModel
+@{
+    ViewData["Title"] = "ScoreView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ScoreView</h2>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form asp-controller="Administrator" asp-action="GetLeagueMatchups" method="post">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        Player name: <br />
+                    </div>
+                    <div class="col">
+                        <select name="Name">
+                            @foreach (var elem in Model.Leagues)
+                            {
+                                <option value="@(elem.Name)">@(elem.Name)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <input type="submit" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="row justify-content-center">
+        <table>
+            <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Player 1
+                </th>
+                <th>
+                    Player 2
+                </th>
+                <th>
+                    Winner
+                </th>
+                <th>
+                    Loser
+                </th>
+                <th>
+                    Is Finished?
+                </th>
+                <th>
+                    League
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+             @if (Model.Matchups != null)
+             {
+                 foreach (var elem in Model.Matchups)
+                  {
+                      <tr>
+                          <td>
+                              @elem.Id
+                          </td>
+                          <td>
+                              @elem.Player1
+                          </td>
+                          <td>
+                              @elem.Player2
+                          </td>
+                          <td>
+                              @elem.Winner
+                          </td>
+                          <td>
+                              @elem.Loser
+                          </td>
+                          <td>
+                              @elem.IsFinished
+                          </td>
+                          <td>
+                              @elem.League.Name
+                          </td>
+                          <td>
+                              <a asp-action="AddScoreFinal" asp-route-id="@elem.Id">Score sheet</a>
+                          </td>
+                      </tr>
+                  }
+             }
+            </tbody>
+        </table>
+    </div>
+</div>
+

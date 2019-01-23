@@ -1,0 +1,36 @@
+﻿@model MatchupModel
+@{
+    ViewData["Title"] = "ScoreSheetView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ScoreSheetView</h2>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form asp-controller="Administrator" asp-action="SubmitScore" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Player1" />
+            <input type="hidden" asp-for="Player2" />
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        Winner: <br />
+                    </div>
+                    <div class="col">
+                        <select id="Winner" name="Winner">
+                            <option value="@Model.Player1">@Model.Player1</option>
+                            <option value="@Model.Player2">@Model.Player2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <input type="submit" />
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

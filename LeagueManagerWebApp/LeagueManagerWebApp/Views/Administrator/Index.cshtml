@@ -1,0 +1,171 @@
+﻿@model LeagueManagerWebApp.ViewModels.AdminViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="body-content container-fluid">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("PlayerCreator", "Administrator")">Player Creator</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("AchievementsCreator", "Administrator")">Achievements Creator</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("LeagueCreator", "Administrator")">League Creator</a>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("AddScore", "Administrator")">Add score</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("PlayerEditor", "Administrator")">Player Editor</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("AchievementEditor", "Administrator")">Achievements Editor</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("LeagueEditor", "Administrator")">League Editor</a>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="btn">
+                        <a class="btn btn-outline-primary btn-lg" href="@Url.Action("LeagueStarter", "Administrator")">League Starter</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Elo
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.PlayerList != null)
+                        {
+                            foreach (var elem in Model.PlayerList)
+                            {
+                                <tr>
+                                    <td>
+                                        @elem.Id
+                                    </td>
+                                    <td>
+                                        @elem.Name
+                                    </td>
+                                    <td>
+                                        @elem.Elo
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Points
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.AchievementList != null)
+                        {
+                            foreach (var elem in Model.AchievementList)
+                            {
+                                <tr>
+                                    <td>
+                                        @elem.Id
+                                    </td>
+                                    <td>
+                                        @elem.Name
+                                    </td>
+                                    <td>
+                                        @elem.Points
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Players
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.LeagueList != null)
+                    {
+                        foreach (var elem in Model.LeagueList)
+                        {
+                            <tr>
+                                <td>
+                                    @elem.Id
+                                </td>
+                                <td>
+                                    @elem.Name
+                                </td>
+                                <td>
+                                    @elem.Players
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

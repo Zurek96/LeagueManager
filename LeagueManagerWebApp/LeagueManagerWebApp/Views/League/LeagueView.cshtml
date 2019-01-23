@@ -1,0 +1,62 @@
+﻿@model List<PlayerModel>
+@{
+    ViewData["Title"] = "LeagueView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LeagueView</h2>
+
+<div class="body-content container-fluid">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col">
+                <table class="table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Elo
+                        </th>
+                        <th>
+                            Games Won
+                        </th>
+                        <th>
+                            Games Lost
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var elem in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @elem.Id
+                                </td>
+                                <td>
+                                    @elem.Name
+                                </td>
+                                <td>
+                                    @elem.Elo
+                                </td>
+                                <td>
+                                    @elem.Wins
+                                </td>
+                                <td>
+                                    @elem.Losses
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
