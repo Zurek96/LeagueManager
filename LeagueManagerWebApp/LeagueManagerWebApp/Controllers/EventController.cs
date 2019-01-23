@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeagueManagerWebApp.Data;
+using LeagueManagerWebApp.Dto;
 using LeagueManagerWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 
@@ -33,129 +34,39 @@ namespace LeagueManagerWebApp.Controllers
             return Redirect("/Identity/Account/Login");
         }
 
-        // GET: Event/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Voting(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var model = _context.VotingModel.First(a => a.Id == id);
+            var dto = new VotingDto();
+            dto.Id = model.Id;
 
-            var eventModel = await _context.EventModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (eventModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(eventModel);
+            return View("Voting", dto);
         }
 
-        // GET: Event/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Event/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Format")] EventModel eventModel)
+        public IActionResult SubmitVote(VotingDto model)
         {
-            if (ModelState.IsValid)
+            var Voting = _context.VotingModel.Find(model.Id);
+            if (Voting.IsOpened)
             {
-                _context.Add(eventModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(eventModel);
-        }
+                if (model.Stand) Voting.Stand++;
+                if (model.Mod) Voting.Mod++;
+                if (model.Pau) Voting.Pau++;
+                if (model.Rain) Voting.Rain++;
+                if (model.Draft) Voting.Draft++;
+                if (model.Sing) Voting.Sing++;
+                if (model.Tri) Voting.Tri++;
+                if (model.Pea) Voting.Pea++;
+                if (model.War) Voting.War++;
+                if (model.Back) Voting.Back++;
 
-        // GET: Event/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+                _context.VotingModel.Update(Voting);
+                _context.SaveChanges();
 
-            var eventModel = await _context.EventModel.FindAsync(id);
-            if (eventModel == null)
-            {
-                return NotFound();
-            }
-            return View(eventModel);
-        }
-
-        // POST: Event/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Format")] EventModel eventModel)
-        {
-            if (id != eventModel.Id)
-            {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(eventModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EventModelExists(eventModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(eventModel);
-        }
-
-        // GET: Event/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var eventModel = await _context.EventModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (eventModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(eventModel);
-        }
-
-        // POST: Event/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var eventModel = await _context.EventModel.FindAsync(id);
-            _context.EventModel.Remove(eventModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool EventModelExists(int id)
-        {
-            return _context.EventModel.Any(e => e.Id == id);
+            return View("PollClosed");
         }
     }
 }

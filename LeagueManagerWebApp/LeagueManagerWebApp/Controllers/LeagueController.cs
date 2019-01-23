@@ -34,7 +34,7 @@ namespace LeagueManagerWebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ViewLeagueStandings(LeagueModel model)
+        public IActionResult ViewLeagueStandings(LeagueModel model)
         {
             var league = _context.LeagueModel.First(a => a.Name == model.Name);
             var players = league.Players.Split(',');

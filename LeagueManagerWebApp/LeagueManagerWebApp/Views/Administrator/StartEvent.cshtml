@@ -1,0 +1,64 @@
+﻿@model LeagueManagerWebApp.ViewModels.EventViewModel
+@{
+    ViewData["Title"] = "StartEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StartEvent</h2>
+<input type="hidden" asp-for="Event.Id" name="EventId" id="EventId"/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Player 1
+            </th>
+            <th>
+                Player 2
+            </th>
+            <th>
+                Is finished
+            </th>
+            <th>
+                Winner
+            </th>
+            <th>
+                Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var elem in Model.Matchups)
+            {
+                <tr>
+                    <td>
+                        @elem.Id
+                    </td>
+                    <td>
+                        @elem.Player1
+                    </td>
+                    <td>
+                        @elem.Player2
+                    </td>
+                    <td>
+                        @elem.IsFinished
+                    </td>
+                    <td>
+                        @elem.Winner
+                    </td>
+                    <td>
+                        @elem.Date
+                    </td>
+                    <td>
+                        <a asp-action="AddScoreFinal" asp-route-id="@elem.Id">Start</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

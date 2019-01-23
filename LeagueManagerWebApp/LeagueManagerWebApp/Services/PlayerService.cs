@@ -10,7 +10,7 @@ namespace LeagueManagerWebApp.Services
 {
     public class PlayerService : IPlayerService
     {
-        public async Task<PlayerViewModel> GetPlayerInfo(string Username, List<PlayerModel> list)
+        public PlayerViewModel GetPlayerInfo(string Username, List<PlayerModel> list)
         {
             var output = new PlayerViewModel();
             foreach (var elem in list.Where(a => a.Name == Username))

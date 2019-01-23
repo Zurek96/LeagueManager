@@ -8,7 +8,11 @@ namespace LeagueManagerWebApp.Models
     public class EventModel
     {
         public int Id { get; set; }
-        public string Format { get; set; }
-        public PlayerModel Winner { get; set; }
+        public VotingModel.Formats Format { get; set; }
+        public string Winner { get; set; }
+        public string LeagueName { get; set; }
+        public bool isFinished { get; set; }
+        public DateTime Date { get; set; }
+        public string Matchups { get; set; }
     }
 }

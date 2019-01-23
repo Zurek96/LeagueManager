@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Models;
+using LeagueManagerWebApp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace LeagueManagerWebApp.Controllers
@@ -23,137 +25,38 @@ namespace LeagueManagerWebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-
-
                 return View(await _context.AchievementModel.ToListAsync());
             }
 
             return Redirect("/Identity/Account/Login");
         }
 
-        // GET: Achievement/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult ShowStandings()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var achievementModel = await _context.AchievementModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (achievementModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(achievementModel);
+            var PlayersList = _context.PlayerModel.ToList();
+            var output = PlayersList.OrderBy(o => o.AchievementScore).Reverse().ToList();
+            
+            return View("StandingsView", output);
         }
 
-        // GET: Achievement/Create
-        public IActionResult Create()
+        public IActionResult AddAchievement()
         {
-            return View();
+            var viewModel = new AchievementsViewModel();
+            viewModel.Players = _context.PlayerModel.ToList();
+            viewModel.Achievements = _context.AchievementModel.ToList();
+            return View("AttachAchievement", viewModel);
         }
 
-        // POST: Achievement/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] AchievementModel achievementModel)
+        public IActionResult SubmitAchievement(string PlayerName, string AchievementName)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(achievementModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(achievementModel);
-        }
-
-        // GET: Achievement/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var achievementModel = await _context.AchievementModel.FindAsync(id);
-            if (achievementModel == null)
-            {
-                return NotFound();
-            }
-            return View(achievementModel);
-        }
-
-        // POST: Achievement/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] AchievementModel achievementModel)
-        {
-            if (id != achievementModel.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(achievementModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AchievementModelExists(achievementModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(achievementModel);
-        }
-
-        // GET: Achievement/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var achievementModel = await _context.AchievementModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (achievementModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(achievementModel);
-        }
-
-        // POST: Achievement/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var achievementModel = await _context.AchievementModel.FindAsync(id);
-            _context.AchievementModel.Remove(achievementModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool AchievementModelExists(int id)
-        {
-            return _context.AchievementModel.Any(e => e.Id == id);
+            var player = _context.PlayerModel.First(o => o.Name == PlayerName);
+            var achievement = _context.AchievementModel.First(o => o.Name == AchievementName);
+            player.AchievementScore += achievement.Points;
+            player.Achievements = player.Achievements + "|" + AchievementName;
+            _context.PlayerModel.Update(player);
+            _context.SaveChanges();
+            return View("Index", _context.AchievementModel.ToList());
         }
     }
 }

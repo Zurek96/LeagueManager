@@ -1,0 +1,43 @@
+﻿@model List<PlayerModel>
+@{
+    ViewData["Title"] = "StandingsView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StandingsView</h2>
+    
+
+<p>
+    <a asp-action="Index">Back</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            List
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AchievementScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Achievements)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

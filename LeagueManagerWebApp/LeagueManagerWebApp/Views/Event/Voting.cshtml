@@ -1,0 +1,105 @@
+﻿@using System.Reflection.Metadata
+@model LeagueManagerWebApp.Dto.VotingDto
+@{
+    ViewData["Title"] = "Voting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Voting</h2>
+<p>Choose your option: <br/></p>
+
+<div class="container">
+    <form asp-controller="Event" asp-action="SubmitVote">
+        <input type="hidden" asp-for="Id" />
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Stand)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m=>m.Stand)
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Mod)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Mod)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Pau)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Pau)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Rain)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Rain)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Draft)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Draft)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Sing)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Sing)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Tri)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Tri)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Pea)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Pea)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.War)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.War)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.DisplayNameFor(model => model.Back)
+            </div>
+            <div class="col">
+                @Html.CheckBoxFor(m => m.Back)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Submit vote
+            </div>
+            <div class="col">
+                <input type="submit"/>
+            </div>
+        </div>
+
+    </form>
+</div>

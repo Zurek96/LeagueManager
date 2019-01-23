@@ -9,6 +9,6 @@ namespace LeagueManagerWebApp.Interfaces
 {
     public interface IPlayerService
     {
-        Task<PlayerViewModel> GetPlayerInfo(string Username, List<PlayerModel> list);
+        PlayerViewModel GetPlayerInfo(string Username, List<PlayerModel> list);
     }
 }

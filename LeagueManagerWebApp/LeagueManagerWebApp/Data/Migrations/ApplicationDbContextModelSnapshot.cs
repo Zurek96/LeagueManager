@@ -42,13 +42,19 @@ namespace LeagueManagerWebApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Format");
+                    b.Property<DateTime>("Date");
 
-                    b.Property<int?>("WinnerId");
+                    b.Property<int>("Format");
+
+                    b.Property<string>("LeagueName");
+
+                    b.Property<string>("Matchups");
+
+                    b.Property<string>("Winner");
+
+                    b.Property<bool>("isFinished");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("WinnerId");
 
                     b.ToTable("EventModel");
                 });
@@ -76,9 +82,11 @@ namespace LeagueManagerWebApp.Data.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("EventId");
+
                     b.Property<bool>("IsFinished");
 
-                    b.Property<int?>("LeagueId");
+                    b.Property<string>("LeagueName");
 
                     b.Property<string>("Loser");
 
@@ -89,8 +97,6 @@ namespace LeagueManagerWebApp.Data.Migrations
                     b.Property<string>("Winner");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LeagueId");
 
                     b.ToTable("MatchupModel");
                 });
@@ -103,7 +109,11 @@ namespace LeagueManagerWebApp.Data.Migrations
 
                     b.Property<int>("AchievementScore");
 
+                    b.Property<string>("Achievements");
+
                     b.Property<int>("Elo");
+
+                    b.Property<bool>("HasVoted");
 
                     b.Property<int>("Losses");
 
@@ -111,11 +121,52 @@ namespace LeagueManagerWebApp.Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("User");
+
                     b.Property<int>("Wins");
 
                     b.HasKey("Id");
 
                     b.ToTable("PlayerModel");
+                });
+
+            modelBuilder.Entity("LeagueManagerWebApp.Models.VotingModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Back");
+
+                    b.Property<int>("Draft");
+
+                    b.Property<int?>("EventId");
+
+                    b.Property<bool>("IsOpened");
+
+                    b.Property<int>("Mod");
+
+                    b.Property<int>("Pau");
+
+                    b.Property<int>("Pea");
+
+                    b.Property<int>("Rain");
+
+                    b.Property<int>("Sing");
+
+                    b.Property<int>("Stand");
+
+                    b.Property<int>("Tri");
+
+                    b.Property<int>("War");
+
+                    b.Property<string>("Winner");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("VotingModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -279,18 +330,11 @@ namespace LeagueManagerWebApp.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("LeagueManagerWebApp.Models.EventModel", b =>
+            modelBuilder.Entity("LeagueManagerWebApp.Models.VotingModel", b =>
                 {
-                    b.HasOne("LeagueManagerWebApp.Models.PlayerModel", "Winner")
+                    b.HasOne("LeagueManagerWebApp.Models.EventModel", "Event")
                         .WithMany()
-                        .HasForeignKey("WinnerId");
-                });
-
-            modelBuilder.Entity("LeagueManagerWebApp.Models.MatchupModel", b =>
-                {
-                    b.HasOne("LeagueManagerWebApp.Models.LeagueModel", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId");
+                        .HasForeignKey("EventId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
