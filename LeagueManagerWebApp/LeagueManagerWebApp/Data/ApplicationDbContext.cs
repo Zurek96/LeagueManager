@@ -19,5 +19,7 @@ namespace LeagueManagerWebApp.Data
         public DbSet<LeagueManagerWebApp.Models.MatchupModel> MatchupModel { get; set; }
         public DbSet<LeagueManagerWebApp.Models.AchievementModel> AchievementModel { get; set; }
         public DbSet<LeagueManagerWebApp.Models.VotingModel> VotingModel { get; set; }
+        public DbSet<LeagueManagerWebApp.Models.MatchupHistoryModel> MatchupHistoryModel { get; set; }
+        public DbSet<LeagueManagerWebApp.Models.FormatsDescriptionModel> FormatDescriptionModel { get; set; }
     }
 }

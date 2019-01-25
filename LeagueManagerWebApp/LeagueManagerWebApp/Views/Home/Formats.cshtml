@@ -1,0 +1,48 @@
+﻿@model List<FormatsDescriptionModel>
+@{
+    ViewData["Title"] = "Formats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Formaty</h2>
+
+<p>
+    Na tej stronie wyjaśnione są poszczególne formaty, w jakich mogą być rozgrywane turnieje. 
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Nazwa formatu
+        </th>
+        <th>
+            Liczba kart w talii
+        </th>
+        <th>
+            Opis
+        </th>
+    </tr>
+    
+    </thead>
+    <tbody>
+    @foreach (var elem in Model)
+    {
+        <tr>
+            <td>
+                @elem.Name
+            </td>
+            <td>
+                @elem.DeckSize
+            </td>
+            <td>
+                @elem.Description
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Index">Powrót</a>
+</p>
+

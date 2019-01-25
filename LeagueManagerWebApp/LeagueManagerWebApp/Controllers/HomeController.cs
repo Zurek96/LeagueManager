@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using LeagueManagerWebApp.Data;
-using LeagueManagerWebApp.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using LeagueManagerWebApp.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace LeagueManagerWebApp.Controllers
 {
@@ -33,24 +28,21 @@ namespace LeagueManagerWebApp.Controllers
             return Redirect("/Identity/Account/Login");
         }
 
-        public IActionResult About()
+        public IActionResult Rules()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Formats()
         {
             ViewData["Message"] = "Your contact page.";
 
-            return View();
+            return View(_context.FormatDescriptionModel.ToList());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

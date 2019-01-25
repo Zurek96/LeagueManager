@@ -61,7 +61,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n<h2>StandingsView</h2>\r\n    \r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(165, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ab171037c184f65a56b5c5ca328fe77", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "51ff60bdf3704928adc60852ef8b9814", async() => {
                 BeginContext(187, 4, true);
                 WriteLiteral("Back");
                 EndContext();

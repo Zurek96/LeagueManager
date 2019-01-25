@@ -70,12 +70,12 @@ using System.Reflection.Metadata;
             WriteLiteral("\r\n<h2>Voting</h2>\r\n<p>Choose your option: <br/></p>\r\n\r\n<div class=\"container\">\r\n    ");
             EndContext();
             BeginContext(250, 2858, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "533fdece57a34016845f210b2a378def", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0441c10df2ce4f8e97f1b7e26b2c5a0a", async() => {
                 BeginContext(303, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(313, 36, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b48a501e55c043948455f4c718ad6406", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "05ce1e4c88f44e1680077aa173361e81", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

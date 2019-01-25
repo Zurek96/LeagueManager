@@ -4,13 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container-fluid">
-    <div class="row justify-content-center">
         <form asp-controller="League" asp-action="ViewLeagueStandings" method="post">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
+                <div class="row ">
                     <div class="col">
-                        Choose league: <br />
+                        Wybierz ligę której Wyniki chcesz zobaczyć: 
                     </div>
                     <div class="col">
                         <select id="Name" name="Name">
@@ -21,13 +18,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col">
-                        <input type="submit" />
-                    </div>
+                
+                    
+                        <input type="submit" value="Wybierz"/>
+                    
 
-                </div>
-            </div>
+                
         </form>
-    </div>
-</div>
+

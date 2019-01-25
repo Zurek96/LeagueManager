@@ -64,7 +64,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n<h2>PollClosed</h2>\r\n<p>\r\n    Voting for this event is finished.\r\n</p>\r\n<p>\r\n    ");
             EndContext();
             BeginContext(178, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a98d94b3958f43399484ce32e9143e34", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd413c57a21947308a6225c39afa687d", async() => {
                 BeginContext(200, 4, true);
                 WriteLiteral("Back");
                 EndContext();

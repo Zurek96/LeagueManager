@@ -67,8 +67,8 @@ namespace LeagueManagerWebApp
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            
-            
+
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -89,6 +89,8 @@ namespace LeagueManagerWebApp
         private static void RegisterServices(IServiceCollection services)
         {
             services.AddTransient<IPlayerService, PlayerService>();
+            services.AddTransient<IAdministratorService, AdministratorService>();
+            services.AddTransient<IEventService, EventService>();
         }
     }
 }

@@ -14,7 +14,13 @@ namespace LeagueManagerWebApp.ViewModels
         public int MatchesLost { get; set; }
         public int MatchesWon { get; set; }
         public int Elo { get; set; }
-        public DateTime LastTimePlayed { get; set; }
-        public List<MatchupModel> MatchupsHistory { get; set; }
+        public List<MatchupHistoryModel> MatchupsHistory { get; set; }
+
+        public PlayerViewModel()
+        {
+            MatchupsHistory = new List<MatchupHistoryModel>();
+        }
     }
+
+    
 }

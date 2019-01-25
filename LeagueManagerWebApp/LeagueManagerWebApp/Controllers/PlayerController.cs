@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Interfaces;
 using LeagueManagerWebApp.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace LeagueManagerWebApp.Controllers
 {
@@ -28,37 +22,27 @@ namespace LeagueManagerWebApp.Controllers
         // GET: Player
         public async Task<IActionResult> Index()
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated) return Redirect("/Identity/Account/Login");
+            var list = await _context.PlayerModel.ToListAsync();
+            if (!list.Exists(a=> a.User == ControllerContext.HttpContext.User.Identity.Name))
             {
-                var a = await _context.Users.ToListAsync();
-                a.Find(b => b.UserName == "a");
-                var list = await _context.PlayerModel.ToListAsync();
-                if (list.Count == 0)
-                {
-                    return View("NullErrorView");
-                }
-
-                var item = _playerservice.GetPlayerInfo(ControllerContext.HttpContext.User.Identity.Name, list);
-                return View("Index", item);
+                return View("CreatePlayer");
             }
 
-            return Redirect("/Identity/Account/Login");
+            var item = _playerservice.GetPlayerInfo(ControllerContext.HttpContext.User.Identity.Name, list, _context);
+            return View("Index", item);
+
         }
 
-        // POST: Player/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpPost]
+        public IActionResult CreatePlayer(PlayerModel model)
         {
-            var playerModel = await _context.PlayerModel.FindAsync(id);
-            _context.PlayerModel.Remove(playerModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool PlayerModelExists(int id)
-        {
-            return _context.PlayerModel.Any(e => e.Id == id);
+            model.User = ControllerContext.HttpContext.User.Identity.Name;
+            model.Elo = 1600;
+            model.HasVoted = false;
+            _context.PlayerModel.Add(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

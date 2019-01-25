@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Models;
 using LeagueManagerWebApp.ViewModels;
 
@@ -9,6 +7,6 @@ namespace LeagueManagerWebApp.Interfaces
 {
     public interface IPlayerService
     {
-        PlayerViewModel GetPlayerInfo(string Username, List<PlayerModel> list);
+        PlayerViewModel GetPlayerInfo(string username, List<PlayerModel> list, ApplicationDbContext context);
     }
 }

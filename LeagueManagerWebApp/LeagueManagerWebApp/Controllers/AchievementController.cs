@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LeagueManagerWebApp.Data;
-using LeagueManagerWebApp.Models;
 using LeagueManagerWebApp.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 
 namespace LeagueManagerWebApp.Controllers
 {
@@ -33,17 +30,18 @@ namespace LeagueManagerWebApp.Controllers
 
         public IActionResult ShowStandings()
         {
-            var PlayersList = _context.PlayerModel.ToList();
-            var output = PlayersList.OrderBy(o => o.AchievementScore).Reverse().ToList();
+            var playersList = _context.PlayerModel.ToList();
+            var output = playersList.OrderBy(o => o.AchievementScore).Reverse().ToList();
             
             return View("StandingsView", output);
         }
 
         public IActionResult AddAchievement()
         {
-            var viewModel = new AchievementsViewModel();
-            viewModel.Players = _context.PlayerModel.ToList();
-            viewModel.Achievements = _context.AchievementModel.ToList();
+            var viewModel = new AchievementsViewModel
+            {
+                Players = _context.PlayerModel.ToList(), Achievements = _context.AchievementModel.ToList()
+            };
             return View("AttachAchievement", viewModel);
         }
 

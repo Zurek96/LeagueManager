@@ -59,6 +59,23 @@ namespace LeagueManagerWebApp.Data.Migrations
                     b.ToTable("EventModel");
                 });
 
+            modelBuilder.Entity("LeagueManagerWebApp.Models.FormatsDescriptionModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DeckSize");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FormatDescriptionModel");
+                });
+
             modelBuilder.Entity("LeagueManagerWebApp.Models.LeagueModel", b =>
                 {
                     b.Property<int>("Id")
@@ -72,6 +89,33 @@ namespace LeagueManagerWebApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LeagueModel");
+                });
+
+            modelBuilder.Entity("LeagueManagerWebApp.Models.MatchupHistoryModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("EventId");
+
+                    b.Property<bool>("IsFinished");
+
+                    b.Property<string>("LeagueName");
+
+                    b.Property<string>("Loser");
+
+                    b.Property<string>("Player1");
+
+                    b.Property<string>("Player2");
+
+                    b.Property<string>("Winner");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MatchupHistoryModel");
                 });
 
             modelBuilder.Entity("LeagueManagerWebApp.Models.MatchupModel", b =>

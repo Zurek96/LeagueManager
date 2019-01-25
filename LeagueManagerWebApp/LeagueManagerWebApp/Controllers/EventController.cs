@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Dto;
-using LeagueManagerWebApp.Models;
-using Microsoft.AspNetCore.Authorization;
+using LeagueManagerWebApp.Interfaces;
 
 namespace LeagueManagerWebApp.Controllers
 {
@@ -16,18 +12,18 @@ namespace LeagueManagerWebApp.Controllers
     public class EventController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IEventService _eventService;
 
-        public EventController(ApplicationDbContext context)
+        public EventController(ApplicationDbContext context, IEventService eventService)
         {
+            _eventService = eventService;
             _context = context;
         }
 
-        // GET: Event
         public async Task<IActionResult> Index()
         {
             if (User.Identity.IsAuthenticated)
             {
-
                 return View(await _context.EventModel.ToListAsync());
             }
 
@@ -36,34 +32,26 @@ namespace LeagueManagerWebApp.Controllers
 
         public IActionResult Voting(int? id)
         {
-            var model = _context.VotingModel.First(a => a.Id == id);
-            var dto = new VotingDto();
-            dto.Id = model.Id;
+            if (_context.PlayerModel.First(a => a.User == ControllerContext.HttpContext.User.Identity.Name).HasVoted ==
+                false)
+            {
+                var model = _context.VotingModel.First(a => a.Id == id);
 
-            return View("Voting", dto);
+                var dto = new VotingDto();
+                dto.Id = model.Id;
+
+                return View("Voting", dto);
+            }
+
+            return View("AlreadyVoted", _context.VotingModel.First(a => a.Id == id));
         }
 
         [HttpPost]
         public IActionResult SubmitVote(VotingDto model)
         {
-            var Voting = _context.VotingModel.Find(model.Id);
-            if (Voting.IsOpened)
+            if (_eventService.SubmitVote(model, _context, ControllerContext.HttpContext.User.Identity.Name))
             {
-                if (model.Stand) Voting.Stand++;
-                if (model.Mod) Voting.Mod++;
-                if (model.Pau) Voting.Pau++;
-                if (model.Rain) Voting.Rain++;
-                if (model.Draft) Voting.Draft++;
-                if (model.Sing) Voting.Sing++;
-                if (model.Tri) Voting.Tri++;
-                if (model.Pea) Voting.Pea++;
-                if (model.War) Voting.War++;
-                if (model.Back) Voting.Back++;
-
-                _context.VotingModel.Update(Voting);
-                _context.SaveChanges();
-
-                return RedirectToAction("Index");
+                return View("Index");
             }
 
             return View("PollClosed");
