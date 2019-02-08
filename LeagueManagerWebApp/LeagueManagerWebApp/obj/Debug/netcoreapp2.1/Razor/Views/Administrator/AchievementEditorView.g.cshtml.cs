@@ -64,7 +64,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n    <h2>AchievementEditorView</h2>\r\n\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row justify-content-center\">\r\n            ");
             EndContext();
             BeginContext(274, 1421, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e1ce7ca94f141d28ad2542999932e3a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "55c1c96ca93c4e39a808d54fe7dde33f", async() => {
                 BeginContext(354, 38, true);
                 WriteLiteral("\r\n                <input type=\"hidden\"");
                 EndContext();

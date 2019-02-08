@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Interfaces;
@@ -168,7 +169,7 @@ namespace LeagueManagerWebApp.Controllers
         public IActionResult GetLeagueMatchups(LeagueModel league)
         {
             var chosenLeague = _context.LeagueModel.First(a=>a.Name==league.Name);
-            var viewModel = new ScoreViewModel(_context.MatchupModel.ToList().Where(a=>a.LeagueName == chosenLeague.Name).ToList(), _context.LeagueModel.ToList());
+            var viewModel = new ScoreViewModel(_context.MatchupModel.ToList().Where(a=>a.LeagueId == chosenLeague.Id).ToList(), _context.LeagueModel.ToList());
             return View("ScoreView", viewModel);
         }
     
@@ -179,6 +180,17 @@ namespace LeagueManagerWebApp.Controllers
         }
 
         [HttpPost]
+        public IActionResult PrepareMatchup(string EventId, string Player1, string Player2)
+        {
+            var matchup = new MatchupModel();
+            matchup.Player1 = Player1;
+            matchup.Player2 = Player2;
+            matchup.Winner = Player1;
+            matchup.EventId = Convert.ToInt32(EventId);
+            return SubmitScore(matchup);
+        }
+
+        
         public IActionResult SubmitScore(MatchupModel model)
         {
             _administratorService.SubmitScore(model, _context);

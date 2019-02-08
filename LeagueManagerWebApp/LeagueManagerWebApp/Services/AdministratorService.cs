@@ -108,7 +108,7 @@ namespace LeagueManagerWebApp.Services
         {
             var model = context.LeagueModel.Find(id);
             var matchups = context.MatchupModel.ToList();
-            foreach (var elem in matchups.Where(a => a.LeagueName == model.Name))
+            foreach (var elem in matchups.Where(a => a.LeagueId == model.Id))
             {
                 context.MatchupModel.Remove(elem);
             }
@@ -128,12 +128,6 @@ namespace LeagueManagerWebApp.Services
         public IActionResult DeleteEvent(int? id, ApplicationDbContext context)
         {
             var model = context.EventModel.Find(id);
-            foreach (var elem in model.Matchups.Split(','))
-            {
-                if (elem == "") continue;
-                context.MatchupModel.Remove(context.MatchupModel.Find(Convert.ToInt32(elem)));
-                context.SaveChanges();
-            }
             context.EventModel.Remove(model);
             foreach (var elem in context.VotingModel.ToList().Where(a => a.Event == model))
             {
@@ -163,38 +157,13 @@ namespace LeagueManagerWebApp.Services
                     players.Add(player);
                 }
             }
-
-            foreach (var player1 in players)
-            {
-                foreach (var player2 in players)
-                {
-                    if (player1 == player2) continue;
-                    if (context.MatchupModel.ToList().Exists(a =>
-                        a.Player1 == player1.Name && a.Player2 == player2.Name || a.Player1 == player2.Name && a.Player2 == player1.Name))
-                        continue;
-                    var tmp = new MatchupModel();
-                    tmp.Player1 = player1.Name;
-                    tmp.Player2 = player2.Name;
-                    tmp.LeagueName = starter.Name;
-                    tmp.IsFinished = false;
-                    matchup.Add(tmp);
-                    context.MatchupModel.Add(tmp);
-                    context.SaveChanges();
-                }
-            }
-
             var Event = new EventModel();
             DateTime today = DateTime.Today;
             int daysUntilTuesday = ((int)DayOfWeek.Tuesday - (int)today.DayOfWeek + 7) % 7;
             Event.Date = today.AddDays(daysUntilTuesday);
-            foreach (var elem in matchup)
-            {
-                Event.Matchups = Event.Matchups + elem.Id + ',';
-
-            }
 
             Event.Format = VotingModel.Formats.Standard;
-            Event.LeagueName = starter.Name;
+            Event.LeagueId = starter.Id;
             Event.isFinished = false;
 
             var voting = new VotingModel();
@@ -224,7 +193,7 @@ namespace LeagueManagerWebApp.Services
                 player1.Wins++;
                 var diff = player1.Elo - player2.Elo;
                 var percW = 1 / (1 + Math.Pow(10, diff / 400));
-                var percL = 1 / (1 + Math.Pow(10, player2.Elo - player1.Elo) / 400);
+                var percL = 1 / (1 + Math.Pow(10, (player2.Elo - player1.Elo) / 400));
                 var k = 32;
 
                 player1.Elo = (int)Math.Floor(player1.Elo + k * (S1 - percW));
@@ -239,20 +208,21 @@ namespace LeagueManagerWebApp.Services
                 player2.Wins++;
                 var diff = player2.Elo - player1.Elo;
                 var percW = 1 / (1 + Math.Pow(10, diff / 400));
-                var percL = 1 / (1 + Math.Pow(10, player1.Elo - player2.Elo) / 400);
+                var percL = 1 / (1 + Math.Pow(10, (player1.Elo - player2.Elo) / 400));
                 var k = 32;
 
                 player2.Elo = (int)Math.Floor(player2.Elo + k * (S1 - percW));
                 player1.Elo = (int)Math.Floor(player1.Elo + k * (S2 - percL));
             }
 
+            model.Date = context.EventModel.Find(model.EventId).Date;
             model.IsFinished = true;
             MatchupHistoryModel histmodel = new MatchupHistoryModel();
             histmodel.Player1 = model.Player1;
             histmodel.Player2 = model.Player2;
             histmodel.Winner = model.Winner;
             histmodel.Loser = model.Loser;
-            histmodel.LeagueName = model.LeagueName;
+            histmodel.LeagueId = model.LeagueId;
             context.MatchupHistoryModel.Add(histmodel);
 
             context.PlayerModel.Update(player1);
@@ -260,9 +230,9 @@ namespace LeagueManagerWebApp.Services
 
             context.MatchupModel.Update(model);
             context.SaveChanges();
-            if (!context.MatchupModel.ToList().Exists(a => a.LeagueName == model.LeagueName && a.IsFinished == false))
+            if (!context.MatchupModel.ToList().Exists(a => a.LeagueId == model.LeagueId && a.IsFinished))
             {
-                var b = context.EventModel.First(a => a.LeagueName == model.LeagueName);
+                var b = context.EventModel.First(a => a.LeagueId == model.LeagueId);
                 b.isFinished = true;
                 context.EventModel.Update(b);
                 context.SaveChanges();
@@ -274,16 +244,11 @@ namespace LeagueManagerWebApp.Services
         {
             var viewModel = new EventViewModel();
             var model = context.EventModel.Find(id);
-            var matchups = new List<MatchupModel>();
-            foreach (var elem in model.Matchups.Split(','))
+            var league = context.LeagueModel.First(a => a.Id == model.LeagueId);
+            foreach (var elem in league.Players.Split(','))
             {
-                if (context.MatchupModel.ToList().Exists(a => a.Id.ToString() == elem))
-                {
-                    matchups.Add(context.MatchupModel.Find(Convert.ToInt32(elem)));
-                }
+                viewModel.Players.Add(context.PlayerModel.First(a=>a.Name==elem));
             }
-
-            viewModel.Matchups = matchups;
             viewModel.Event = model;
             return viewModel;
         }
@@ -321,6 +286,7 @@ namespace LeagueManagerWebApp.Services
                     }
                 }
 
+                voting.IsOpened = false;
                 context.VotingModel.Update(voting);
                 context.EventModel.Update(Event);
                 context.SaveChanges();

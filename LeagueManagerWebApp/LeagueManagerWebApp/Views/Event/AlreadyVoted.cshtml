@@ -3,27 +3,37 @@
     ViewData["Title"] = "AlreadyVoted";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="display-2">Już głosowałeś</h2>
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            Musisz cierpliwie poczekać na koniec głosowania. Niżej znajdują się aktualne wyniki:
+        </p>
+    </div>
+    <div class="row">
+        <ul>
+            <li>@Html.DisplayNameFor(model => Model.Stand) : @Model.Stand</li>
+            <li>@Html.DisplayNameFor(model => Model.Mod) : @Model.Mod</li>
+            <li>@Html.DisplayNameFor(model => Model.Pau) : @Model.Pau</li>
+            <li>@Html.DisplayNameFor(model => Model.Rain) : @Model.Rain</li>
+            <li>@Html.DisplayNameFor(model => Model.Draft) : @Model.Draft</li>
+            <li>@Html.DisplayNameFor(model => Model.Sing) : @Model.Sing</li>
+            <li>@Html.DisplayNameFor(model => Model.Tri) : @Model.Tri</li>
+            <li>@Html.DisplayNameFor(model => Model.Pea) : @Model.Pea</li>
+            <li>@Html.DisplayNameFor(model => Model.War) : @Model.War</li>
+            <li>@Html.DisplayNameFor(model => Model.Back) : @Model.Back</li>
 
-<h2>AlreadyVoted</h2>
-
-<p>
-    You have already voted. There are the results:
-</p>
-
-<ul>
-    <li>@Html.DisplayNameFor(model => Model.Stand) : @Model.Stand</li>
-    <li>@Html.DisplayNameFor(model => Model.Mod) : @Model.Mod</li>
-    <li>@Html.DisplayNameFor(model => Model.Pau) : @Model.Pau</li>
-    <li>@Html.DisplayNameFor(model => Model.Rain) : @Model.Rain</li>
-    <li>@Html.DisplayNameFor(model => Model.Draft) : @Model.Draft</li>
-    <li>@Html.DisplayNameFor(model => Model.Sing) : @Model.Sing</li>
-    <li>@Html.DisplayNameFor(model => Model.Tri) : @Model.Tri</li>
-    <li>@Html.DisplayNameFor(model => Model.Pea) : @Model.Pea</li>
-    <li>@Html.DisplayNameFor(model => Model.War) : @Model.War</li>
-    <li>@Html.DisplayNameFor(model => Model.Back) : @Model.Back</li>
-
-</ul>
-
-<p>
-    <a asp-action="Index">Home</a>
-</p>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary btn-block"asp-action="Index">Powrót</a>
+        </div>
+    </div>
+</div>
+</body>

@@ -91,3 +91,4 @@ C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Debug
 C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Event\AlreadyVoted.g.cshtml.cs
 C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Administrator\AccessDenied.g.cshtml.cs
+C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Event\VotingResult.g.cshtml.cs

@@ -64,7 +64,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n<h2>EventFinished</h2>\r\n<p>\r\n    This event is finished.\r\n</p>\r\n<p>\r\n    ");
             EndContext();
             BeginContext(173, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a04a2138c8e0412f97e5503195bab52c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0438599cd74c4035836c985caf26963e", async() => {
                 BeginContext(195, 4, true);
                 WriteLiteral("Back");
                 EndContext();

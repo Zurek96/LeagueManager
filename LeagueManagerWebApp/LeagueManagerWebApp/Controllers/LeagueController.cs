@@ -23,30 +23,19 @@ namespace LeagueManagerWebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                var list = _context.LeagueModel.First(a =>
+                    a.Players.Contains(_context.PlayerModel
+                        .First(b => b.User == ControllerContext.HttpContext.User.Identity.Name).Name));
+                var players = list.Players.Split(',');
+                List<PlayerModel> playersList = (from elem in players where _context.PlayerModel.ToList().Exists(a => a.Name == elem) select _context.PlayerModel.ToList().First(a => a.Name == elem)).ToList();
 
-                return View(await _context.LeagueModel.ToListAsync());
+                var final = playersList.OrderBy(o => o.Elo).Reverse().ToList();
+                return View("LeagueView", final);
             }
 
             return Redirect("/Identity/Account/Login");
         }
 
-        [HttpPost]
-        public IActionResult ViewLeagueStandings(LeagueModel model)
-        {
-            var league = _context.LeagueModel.First(a => a.Name == model.Name);
-            var players = league.Players.Split(',');
-            List<PlayerModel> playersList = new List<PlayerModel>();
-            foreach (var elem in players)
-            {
-                if (_context.PlayerModel.ToList().Exists(a=>a.Name==elem))
-                {
-                    playersList.Add(_context.PlayerModel.ToList().First(a=> a.Name==elem));
-                }
-            }
-
-            var final = playersList.OrderBy(o => o.Elo).Reverse().ToList();
-            return View("LeagueView", final);
-        }
 
         
     }

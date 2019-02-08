@@ -5,6 +5,7 @@ namespace LeagueManagerWebApp.Dto
     public class VotingDto
     {
         public int Id { get; set; }
+        public int EventId { get; set; }
         [DisplayName("Standard")]
         public bool Stand { get; set; }
         [DisplayName("Modern")]

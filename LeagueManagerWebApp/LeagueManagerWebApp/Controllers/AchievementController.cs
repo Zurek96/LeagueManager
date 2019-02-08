@@ -22,7 +22,7 @@ namespace LeagueManagerWebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return View(await _context.AchievementModel.ToListAsync());
+                return View(_context.AchievementModel.ToList().OrderBy(a => a.Points).Reverse());
             }
 
             return Redirect("/Identity/Account/Login");
@@ -54,7 +54,9 @@ namespace LeagueManagerWebApp.Controllers
             player.Achievements = player.Achievements + "|" + AchievementName;
             _context.PlayerModel.Update(player);
             _context.SaveChanges();
-            return View("Index", _context.AchievementModel.ToList());
+            var output = _context.AchievementModel.ToList();
+
+            return View("Index", output.OrderBy(a => a.Points));
         }
     }
 }

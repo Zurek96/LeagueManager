@@ -20,6 +20,7 @@ namespace LeagueManagerWebApp.Services
                 output.MatchesPlayed = elem.MatchesPlayed;
                 output.MatchesLost = elem.Losses;
                 output.MatchesWon = elem.Wins;
+                output.Draws = elem.Draws;
             }
 
             foreach (var elem in context.MatchupHistoryModel.ToList()

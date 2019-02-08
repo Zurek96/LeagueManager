@@ -10,7 +10,7 @@ namespace LeagueManagerWebApp.Models
         public int Id { get; set; }
         public VotingModel.Formats Format { get; set; }
         public string Winner { get; set; }
-        public string LeagueName { get; set; }
+        public int LeagueId { get; set; }
         public bool isFinished { get; set; }
         public DateTime Date { get; set; }
         public string Matchups { get; set; }

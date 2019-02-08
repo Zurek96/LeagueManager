@@ -9,6 +9,11 @@ namespace LeagueManagerWebApp.ViewModels
     public class EventViewModel
     {
         public EventModel Event { get; set; }
-        public List<MatchupModel> Matchups { get; set; }
+        public List<PlayerModel> Players { get; set; }
+
+        public EventViewModel()
+        {
+            Players=new List<PlayerModel>();
+        }
     }
 }

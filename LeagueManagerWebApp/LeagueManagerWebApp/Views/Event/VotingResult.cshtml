@@ -1,0 +1,45 @@
+﻿@model LeagueManagerWebApp.ViewModels.VotingResultViewModel
+@{
+    ViewData["Title"] = "VotingResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+<div class="container">
+    <div class="row">
+        <h2 class="display-2">Wyniki głosowania</h2>
+    </div>
+    <div class="row">
+        <h4 class="display-4">Zwycięzki format: @Model.winner</h4>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Format
+                    </th>
+                    <th>
+                        Liczba głosów
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var elem in Model.formats)
+                {
+                    <tr>
+                        <td>
+                            @elem.Key
+                        </td>
+                        <td>
+                            @elem.Value
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+

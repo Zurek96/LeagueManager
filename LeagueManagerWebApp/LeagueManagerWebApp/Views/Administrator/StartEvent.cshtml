@@ -5,60 +5,21 @@
 }
 
 <h2>StartEvent</h2>
-<input type="hidden" asp-for="Event.Id" name="EventId" id="EventId"/>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Player 1
-            </th>
-            <th>
-                Player 2
-            </th>
-            <th>
-                Is finished
-            </th>
-            <th>
-                Winner
-            </th>
-            <th>
-                Date
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null)
+<form asp-controller="Administrator" asp-action="PrepareMatchup">
+    <input type="hidden" asp-for="Event.Id" name="EventId" id="EventId" />
+    Winner:
+    <select id="Player1" name="Player1">
+        @foreach (var elem in Model.Players)
         {
-            foreach (var elem in Model.Matchups)
-            {
-                <tr>
-                    <td>
-                        @elem.Id
-                    </td>
-                    <td>
-                        @elem.Player1
-                    </td>
-                    <td>
-                        @elem.Player2
-                    </td>
-                    <td>
-                        @elem.IsFinished
-                    </td>
-                    <td>
-                        @elem.Winner
-                    </td>
-                    <td>
-                        @elem.Date
-                    </td>
-                    <td>
-                        <a asp-action="AddScoreFinal" asp-route-id="@elem.Id">Start</a>
-                    </td>
-                </tr>
-            }
+            <option value="@elem.Name">@elem.Name</option>
         }
-    </tbody>
-</table>
+    </select>
+    Loser:
+    <select id="Player2" name="Player2">
+        @foreach (var elem in Model.Players)
+        {
+            <option value="@elem.Name">@elem.Name</option>
+        }
+    </select>
+    <input type="submit" />
+</form>

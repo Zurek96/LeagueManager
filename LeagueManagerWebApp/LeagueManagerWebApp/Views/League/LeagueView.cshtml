@@ -3,61 +3,64 @@
     ViewData["Title"] = "LeagueView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<body>
+<div class="container">
+    <div class="row">
+        <h2 class="display-2 ">Ranking ligi</h2>
+    </div>
+    <div class="row">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Miejsce
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Elo
+                            </th>
+                            <th>
+                                Games Won
+                            </th>
+                            <th>
+                                Games Lost
+                            </th>
 
-<h2>LeagueView</h2>
-
-<div class="body-content container-fluid">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Elo
-                        </th>
-                        <th>
-                            Games Won
-                        </th>
-                        <th>
-                            Games Lost
-                        </th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if (Model != null)
-                    {
-                        foreach (var elem in Model)
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if (Model != null)
                         {
-                            <tr>
-                                <td>
-                                    @elem.Id
-                                </td>
-                                <td>
-                                    @elem.Name
-                                </td>
-                                <td>
-                                    @elem.Elo
-                                </td>
-                                <td>
-                                    @elem.Wins
-                                </td>
-                                <td>
-                                    @elem.Losses
-                                </td>
-                            </tr>
+                            for(int i = 0; i<Model.Count;i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @(i+1)
+                                    </td>
+                                    <td>
+                                        @Model[i].Name
+                                    </td>
+                                    <td>
+                                        @Model[i].Elo
+                                    </td>
+                                    <td>
+                                        @Model[i].Wins
+                                    </td>
+                                    <td>
+                                        @Model[i].Losses
+                                    </td>
+                                </tr>
+                                
+                                
+                            }
                         }
-                    }
-                    </tbody>
-            </table>
-            </div>
-        </div>
+                        </tbody>
+                    </table>
+               
+          
+        
     </div>
 </div>
+</body>

@@ -12,7 +12,7 @@ namespace LeagueManagerWebApp.Models
         public string Loser { get; set; }
         public bool IsFinished { get; set; }
         public DateTime Date { get; set; }
-        public string LeagueName { get; set; }
+        public int LeagueId { get; set; }
         public int EventId { get; set; }
     }
 }

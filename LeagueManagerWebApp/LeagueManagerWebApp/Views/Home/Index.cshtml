@@ -2,24 +2,92 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-<div class="body-content container-fluid">
+<body>
+<div class="container">
     <div class="row ">
-        <h1>Hello</h1>
+        <h1 class="display-3">Hello</h1>
     </div>
+    <br />
     <div class="row">
         <p>
             Witam na portalu do zarządzania ligą. Poniżej znajdują się przydatne linki:
         </p>
     </div>
+    <br />
+  
     <div class="row">
         <div class="col">
-            <a asp-action="Rules" class="btn-lg btn-outline-primary">Zasady</a>
+            <div class="card" style="width: 80%; ">
+                <img src="/images/rules.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Zasady</h5>
+                    <p class="card-text">Zasady uczestnictwa, punktowania oraz grania w lidze.</p>
+                    <a class="btn btn-primary btn-block"  asp-action="Rules">Zasady</a>
+                </div>
+            </div>
         </div>
-    
-    
-    <div class="col">
-            <a asp-action="Formats" class="btn-lg btn-outline-primary btn-">Formaty</a>
+
+        <div class="col">
+            <div class="card" style="width: 80%; ">
+                <img src="/images/formats.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Formaty</h5>
+                    <p class="card-text">Lista formatów wraz z opisami.</p>
+                    <a class="btn btn-primary btn-block" asp-action="Formats">Formaty</a>
+                </div>
+            </div>
+        </div>
     </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 80%;">
+                <img src="/images/terminarz.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Terminarz</h5>
+                    <p class="card-text">Lista spotkań przeprowadzonych w ramach ligi, przeszłych i przyszłych.</p>
+                    <a class="btn btn-primary btn-block" asp-controller="Event" asp-action="Index">Terminarz</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col">
+            <div class="card" style="width: 80%;">
+                <img src="/images/stats.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Twoje statystyki</h5>
+                    <p class="card-text">Twoje statystyki w lidze.</p>
+                    <a class="btn btn-primary btn-block" asp-controller="Player" asp-action="Index">Twoje statystyki</a>
+                </div>
+            </div>
+        </div>
     </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 80%;">
+                <img src="/images/rank.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ranking</h5>
+                    <p class="card-text">Wyniki ligi.</p>
+                    <a class="btn btn-primary btn-block" asp-controller="League" asp-action="Index">Ranking</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col">
+            <div class="card" style="width: 80%;">
+                <img src="/images/ach.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Osiągnięcia</h5>
+                    <p class="card-text">Lista osiągnięć oraz ranking.</p>
+                    <a class="btn btn-primary btn-block" asp-controller="Achievement" asp-action="Index">Osiągnięcia</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <br />
 </div>
+</body>

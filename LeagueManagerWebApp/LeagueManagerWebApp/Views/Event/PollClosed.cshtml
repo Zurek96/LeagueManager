@@ -3,11 +3,22 @@
     ViewData["Title"] = "PollClosed";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>PollClosed</h2>
-<p>
-    Voting for this event is finished.
-</p>
-<p>
-    <a asp-action="Index">Back</a>
-</p>
+<body>
+<div class="container">
+    <div class="row">
+        <h2>PollClosed</h2>
+    </div>
+    <div class="row">
+        <p>
+            Voting for this event is finished.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>
+                <a class="btn btn-primary btn-block" asp-action="Index">Back</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>

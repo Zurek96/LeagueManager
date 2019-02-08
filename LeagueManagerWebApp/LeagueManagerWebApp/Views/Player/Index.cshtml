@@ -4,22 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
+<body>
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="text-left">Nick: @Model.Name</h1> <br/>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col">
-            <h3 class="text-left">Rozegrane: @Model.MatchesPlayed</h3> <br>
-            <h3 class="text-left">Zwycięstwa: @Model.MatchesLost</h3> <br>
-            <h3 class="text-left">Porażki: @Model.MatchesWon</h3> <br>
-            <h3 class="text-left">Elo: @Model.Elo</h3> <br>
+            <h2 class="text-left display-4">Nick: @Model.Name</h2> <br/>
+            <h3 class="text-left display-4">Elo: @Model.Elo</h3> <br>
             @if (Model.MatchesPlayed != 0)
             {
-                <h3 class="text-left">% zwycięstw: @(Model.MatchesWon * 100 / Model.MatchesPlayed) %</h3>
+                <h3 class="text-left display-4">% zwycięstw: @(Model.MatchesWon * 100 / Model.MatchesPlayed) %</h3>
                 <br>
             }
             else
@@ -27,54 +20,67 @@
                 <h3 class="text-left">% zwycięstw: 0%</h3>
             }
         </div>
+        <br/>
+        <div class="col">
+            <h3 class="text-left display-4">Rozegrane: @Model.MatchesPlayed</h3> <br>
+            <h3 class="text-left display-4">Zwycięstwa: @Model.MatchesWon</h3> <br>
+            <h3 class="text-left display-4">Porażki: @Model.MatchesLost</h3> <br>
+            <h3 class="text-left display-4">Remisy: @Model.Draws</h3> <br/>
+            
+        </div>
     </div>
-        <div class="row">
-            <a class="text-right">Historia gier:</a> <br>
+    <div class="row">
+        <div class="col">
+            <h4 class="display-4">Historia gier: </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             @if (Model.MatchesPlayed > 0)
             {
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Player 1
-                                </th>
-                                <th>
-                                    Player 2
-                                </th>
-                                <th>
-                                    Zwycięzca
-                                </th>
-                                <th>
-                                    Data
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model.MatchupsHistory != null)
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Player 1
+                            </th>
+                            <th>
+                                Player 2
+                            </th>
+                            <th>
+                                Zwycięzca
+                            </th>
+                            <th>
+                                Data
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.MatchupsHistory != null)
+                        {
+                            foreach (var elem in Model.MatchupsHistory)
                             {
-                                foreach (var elem in Model.MatchupsHistory)
-                                {
-                                    <tr>
-                                        <td>
-                                            @elem.Player1
-                                        </td>
-                                        <td>
-                                            @elem.Player2
-                                        </td>
-                                        <td>
-                                            @elem.Winner
-                                        </td>
-                                        <td>
-                                            @elem.Date.ToShortDateString()
-                                        </td>
-                                    </tr>
-                                }
+                                <tr>
+                                    <td>
+                                        @elem.Player1
+                                    </td>
+                                    <td>
+                                        @elem.Player2
+                                    </td>
+                                    <td>
+                                        @elem.Winner
+                                    </td>
+                                    <td>
+                                        @elem.Date.ToShortDateString()
+                                    </td>
+                                </tr>
                             }
-                        </tbody>
-                    </table>
-                
+                        }
+                    </tbody>
+                </table>
+
             }
         </div>
-    
+    </div>
 </div>
+</body>

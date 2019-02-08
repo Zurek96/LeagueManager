@@ -3,26 +3,26 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body>
+    <form asp-controller="League" method="post">
+        <div class="row ">
+            <div class="col">
+                Wybierz ligę której Wyniki chcesz zobaczyć:
+            </div>
+            <div class="col">
+                <select id="Name" name="Name">
+                    @foreach (var elem in Model)
+                    {
+                        <option value="@elem.Name">@elem.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
 
-        <form asp-controller="League" asp-action="ViewLeagueStandings" method="post">
-                <div class="row ">
-                    <div class="col">
-                        Wybierz ligę której Wyniki chcesz zobaczyć: 
-                    </div>
-                    <div class="col">
-                        <select id="Name" name="Name">
-                            @foreach (var elem in Model)
-                            {
-                                <option value="@elem.Name">@elem.Name</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-                
-                    
-                        <input type="submit" value="Wybierz"/>
-                    
 
-                
-        </form>
+        <input type="submit" value="Wybierz" />
 
+
+
+    </form>
+</body>
