@@ -207,5 +207,17 @@ namespace LeagueManagerWebApp.Controllers
             _administratorService.CloseVoting(id, _context);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> EditEvent(int? id)
+        {
+            return View("EventEditView", _context.EventModel.Find(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditEvent(EventModel model)
+        {
+            await _administratorService.EditEvent(model, _context);
+            return RedirectToAction("Index");
+        }
     }
 }

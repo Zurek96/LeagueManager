@@ -1,0 +1,20 @@
+{
+  "name": "LeagueManagerWebApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "repository": "",
+  "dependencies": {
+    "html-minifier": "^3.5.21",
+    "uglify-js": "^3.4.9"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  }
+}

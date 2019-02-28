@@ -1,13 +1,10 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using LeagueManagerWebApp.Data;
+﻿using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace LeagueManagerWebApp.Controllers
 {
-    
     public class AchievementController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,7 +15,7 @@ namespace LeagueManagerWebApp.Controllers
         }
 
         // GET: Achievement
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -32,7 +29,7 @@ namespace LeagueManagerWebApp.Controllers
         {
             var playersList = _context.PlayerModel.ToList();
             var output = playersList.OrderBy(o => o.AchievementScore).Reverse().ToList();
-            
+
             return View("StandingsView", output);
         }
 
@@ -40,7 +37,8 @@ namespace LeagueManagerWebApp.Controllers
         {
             var viewModel = new AchievementsViewModel
             {
-                Players = _context.PlayerModel.ToList(), Achievements = _context.AchievementModel.ToList()
+                Players = _context.PlayerModel.ToList(),
+                Achievements = _context.AchievementModel.ToList()
             };
             return View("AttachAchievement", viewModel);
         }

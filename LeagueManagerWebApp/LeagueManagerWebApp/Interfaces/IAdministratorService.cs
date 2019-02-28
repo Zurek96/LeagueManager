@@ -22,5 +22,6 @@ namespace LeagueManagerWebApp.Interfaces
         IActionResult SubmitScore(MatchupModel model, ApplicationDbContext context);
         EventViewModel StartEvent(int? id, ApplicationDbContext context);
         IActionResult CloseVoting(int? id, ApplicationDbContext context);
+        Task<IActionResult> EditEvent(EventModel model, ApplicationDbContext context);
     }
 }

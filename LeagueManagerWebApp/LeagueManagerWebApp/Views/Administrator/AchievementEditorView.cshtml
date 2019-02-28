@@ -1,14 +1,14 @@
 ﻿@model AchievementModel
 @{
-        ViewData["Title"] = "AchievementEditorView";
-        Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "AchievementEditorView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <h2>AchievementEditorView</h2>
-
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <form asp-controller="Administrator" asp-action="EditAchievement" method="post">
+<div class="container-fluid" style="margin-top: 10%">
+    <div class="row justify-content-center">
+        <form asp-controller="Administrator" asp-action="EditAchievement" method="post">
+            <fieldset>
+                <legend>Achievement Editor</legend>
                 <input type="hidden" value="@Model" name="Id" />
                 <div class="container-fluid">
                     <div class="row justify-content-center">
@@ -34,11 +34,11 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col">
-                            <input type="submit" />
+                            <input class="btn btn-primary" type="submit" />
                         </div>
-
                     </div>
                 </div>
-            </form>
-        </div>
+            </fieldset>
+        </form>
     </div>
+</div>

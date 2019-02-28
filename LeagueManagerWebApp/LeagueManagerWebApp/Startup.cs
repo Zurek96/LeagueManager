@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using LeagueManagerWebApp.Data;
+﻿using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Interfaces;
 using LeagueManagerWebApp.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,19 +24,17 @@ namespace LeagueManagerWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-                
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             RegisterServices(services);
@@ -49,7 +42,6 @@ namespace LeagueManagerWebApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAuthorization((options =>
             {
-                
                 options.AddPolicy("RequireAdmin", policy => policy.RequireRole("Admin"));
             }));
         }
@@ -75,15 +67,12 @@ namespace LeagueManagerWebApp
 
             app.UseAuthentication();
 
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-                    
             });
-
         }
 
         private static void RegisterServices(IServiceCollection services)
@@ -91,6 +80,7 @@ namespace LeagueManagerWebApp
             services.AddTransient<IPlayerService, PlayerService>();
             services.AddTransient<IAdministratorService, AdministratorService>();
             services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IHomeService, HomeService>();
         }
     }
 }

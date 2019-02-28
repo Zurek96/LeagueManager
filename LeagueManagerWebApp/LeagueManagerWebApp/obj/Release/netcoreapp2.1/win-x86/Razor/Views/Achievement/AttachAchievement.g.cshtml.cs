@@ -63,12 +63,12 @@ using LeagueManagerWebApp.Models;
 #line default
 #line hidden
             BeginContext(161, 1593, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7683d174415241a58ab14ab07ce3defe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cdcb9bd4cc84044bbe7ef6c13d601bf", async() => {
                 BeginContext(167, 115, true);
                 WriteLiteral("\r\n<h2>AttachAchievement</h2>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row justify-content-center\">\r\n        ");
                 EndContext();
                 BeginContext(282, 1443, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f115309c18f742c192f75271cb035f52", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3498a8737c7b4c08ad6c264564155eac", async() => {
                     BeginContext(362, 282, true);
                     WriteLiteral(@"
             <div class=""container-fluid"">
@@ -90,7 +90,7 @@ using LeagueManagerWebApp.Models;
                     WriteLiteral("                            ");
                     EndContext();
                     BeginContext(761, 50, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c01342b0de544a999657deca97452c8", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f64f03fd69f84722b4dbaf08b55e520c", async() => {
                         BeginContext(792, 9, false);
 #line 20 "C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\Views\Achievement\AttachAchievement.cshtml"
                                                      Write(elem.Name);
@@ -148,7 +148,7 @@ using LeagueManagerWebApp.Models;
                     WriteLiteral("                                ");
                     EndContext();
                     BeginContext(1300, 50, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "013760d922df47b28d0dbcf1c3032a57", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39526fdc4ec94ee69618b4cba9ebeb98", async() => {
                         BeginContext(1331, 9, false);
 #line 32 "C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\Views\Achievement\AttachAchievement.cshtml"
                                                          Write(elem.Name);

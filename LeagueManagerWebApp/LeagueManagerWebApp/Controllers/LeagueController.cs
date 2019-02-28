@@ -1,14 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using LeagueManagerWebApp.Data;
+﻿using LeagueManagerWebApp.Data;
 using LeagueManagerWebApp.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LeagueManagerWebApp.Controllers
 {
-
     public class LeagueController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -19,7 +16,7 @@ namespace LeagueManagerWebApp.Controllers
         }
 
         // GET: League
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -35,8 +32,5 @@ namespace LeagueManagerWebApp.Controllers
 
             return Redirect("/Identity/Account/Login");
         }
-
-
-        
     }
 }

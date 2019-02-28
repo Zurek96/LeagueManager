@@ -67,7 +67,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n<h2>PlayerCreatorView</h2>\r\n\r\n<div class=\"container-fluid\">\r\n    <div class=\"row justify-content-center\">\r\n        ");
             EndContext();
             BeginContext(219, 686, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fae89aa5fe784690b1ed9586f2b7c694", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2ccc7820bf1444e94c4be42649d25e6", async() => {
                 BeginContext(296, 602, true);
                 WriteLiteral(@"
             <div class=""container-fluid"">

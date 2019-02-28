@@ -4,71 +4,61 @@
     ViewData["Title"] = "Index";
 }
 <body>
-<div class="container" >
     <div class="row justify-content-center">
         <h2 class="display-2">Terminarz</h2>
     </div>
     <div class="row">
         <div class="col">
             <table class="table table-bordered table-striped table-hover">
-                <thead class="thead-dark" >
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Format)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LeagueId)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Winner)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Date)
-                    </th>
-                    <th>
-                        Akcje
-                    </th>
-                </tr>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Format)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Winner)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th scope="col">
+                            Akcje
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Format)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LeagueId)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Winner)
-                        </td>
-                        <td>
-                            @item.Date.ToShortDateString()
-                        </td>
-                        <td>
-                            @if (!item.isFinished)
-                            {
-                                <a class="btn btn-primary btn-sm" asp-action="Voting" asp-route-id="@item.Id">Głosowanie</a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-primary btn-sm" asp-action="VotingResults" asp-route-id="@item.Id">Wyniki</a>
-                            }
-                        </td>
-                    </tr>
-                }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td scope="row" data-label="Numer">
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td data-label="Format">
+                                @Html.DisplayFor(modelItem => item.Format)
+                            </td>
+                            <td data-label="Zwycięzca">
+                                @Html.DisplayFor(modelItem => item.Winner)
+                            </td>
+                            <td data-label="Data">
+                                @item.Date.ToShortDateString()
+                            </td>
+                            <td data-label="Akcje">
+                                @if (!item.isVotingFinished)
+                                {
+                                    <a class="btn btn-primary btn-sm" asp-action="Voting" asp-route-id="@item.Id">Głosowanie</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-primary btn-sm" asp-action="VotingResults" asp-route-id="@item.Id">Wyniki</a>
+                                }
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 </body>

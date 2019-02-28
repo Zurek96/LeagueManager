@@ -3,47 +3,39 @@
     ViewData["Title"] = "Formats";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script>
+    $(function () {
+        $("#ui-tabs").tabs({
+            collapsible: true
+        });
+    });
+</script>
 <body>
-<h2>Formaty</h2>
+    <div class="container" style="margin-left: 10%">
+        <h2>Formaty</h2>
 
-<p>
-    Na tej stronie wyjaśnione są poszczególne formaty, w jakich mogą być rozgrywane turnieje. 
-</p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            Nazwa formatu
-        </th>
-        <th>
-            Liczba kart w talii
-        </th>
-        <th>
-            Opis
-        </th>
-    </tr>
-    
-    </thead>
-    <tbody>
-    @foreach (var elem in Model)
-    {
-        <tr>
-            <td>
-                @elem.Name
-            </td>
-            <td>
-                @elem.DeckSize
-            </td>
-            <td>
-                @elem.Description
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+        <p>
+            Na tej stronie wyjaśnione są poszczególne formaty, w jakich mogą być rozgrywane turnieje.
+        </p>
 
-<p>
-    <a asp-action="Index">Powrót</a>
-</p>
+        <div id="ui-tabs">
+            <ul>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <li><a href="#tabs-@i">@Model[i].Name</a></li>
+                }
+            </ul>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div id="tabs-@i">
+                    <p style="font-style: oblique">Liczba kart w talii: @Model[i].DeckSize</p><br />
+                    <p style="font-style: oblique">Opis:</p><br />
+                    <p>@Model[i].Description</p>
+                </div>
+            }
+        </div>
+        <p>
+            <a asp-action="Index">Powrót</a>
+        </p>
+    </div>
 </body>

@@ -65,7 +65,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n<h2>LeagueStarterView</h2>\r\n\r\n<div class=\"container-fluid\">\r\n    <div class=\"row justify-content-center\">\r\n        ");
             EndContext();
             BeginContext(243, 902, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f59746a48db4d98b687e673aa61aa5a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "48489876874c47a6b8424a0f3808589c", async() => {
                 BeginContext(319, 300, true);
                 WriteLiteral(@"
             <div class=""container-fluid"">
@@ -87,7 +87,7 @@ using LeagueManagerWebApp.Models;
                 WriteLiteral("                                ");
                 EndContext();
                 BeginContext(740, 50, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f98f2e33f9b6407790c4ae5db270d03a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "935bb3ad6ab748e097678692746446fe", async() => {
                     BeginContext(771, 9, false);
 #line 21 "C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\Views\Administrator\LeagueStarterView.cshtml"
                                                          Write(elem.Name);

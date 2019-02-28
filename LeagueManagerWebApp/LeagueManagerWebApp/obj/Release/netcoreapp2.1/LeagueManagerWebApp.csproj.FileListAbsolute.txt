@@ -92,3 +92,4 @@ C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Relea
 C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Release\netcoreapp2.1\Razor\Views\Administrator\AccessDenied.g.cshtml.cs
 C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Release\netcoreapp2.1\Razor\Views\Event\AlreadyVoted.g.cshtml.cs
 C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Release\netcoreapp2.1\Razor\Views\Event\VotingResult.g.cshtml.cs
+C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\obj\Release\netcoreapp2.1\Razor\Views\Administrator\EventEditView.g.cshtml.cs

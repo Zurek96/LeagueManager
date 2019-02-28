@@ -60,7 +60,7 @@ using LeagueManagerWebApp.Models;
 #line default
 #line hidden
             BeginContext(115, 1338, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e4f48c65157450cb778c37709c7ae98", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "022e04cc47f44d9b979592de0212fec2", async() => {
                 BeginContext(121, 373, true);
                 WriteLiteral(@"
 <div class=""container"">
@@ -279,7 +279,7 @@ using LeagueManagerWebApp.Models;
                 WriteLiteral("</li>\r\n\r\n        </ul>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col\">\r\n            ");
                 EndContext();
                 BeginContext(1343, 65, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "549566b06f0a4e0ea4b7fa305e474f94", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8ebc001547c442f89c810588e3f3366", async() => {
                     BeginContext(1398, 6, true);
                     WriteLiteral("Powrót");
                     EndContext();

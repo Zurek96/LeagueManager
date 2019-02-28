@@ -4,218 +4,217 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-<div class="row justify-content-center">
-<div class="row justify-content-center">
-    <div class="col">
-        <a class="btn btn-primary btn-block" href="@Url.Action("PlayerCreator", "Administrator")">Player Creator</a>
-    </div>
-    <div class="col">
-        <a class="btn btn-primary btn-block" href="@Url.Action("AchievementsCreator", "Administrator")">Achievements Creator</a>
-    </div>
-    <div class="col">
-        <a class="btn btn-primary btn-block" href="@Url.Action("LeagueCreator", "Administrator")">League Creator</a>
-    </div>
-    <div class="col">
-        <a class="btn btn-primary btn-block" href="@Url.Action("LeagueStarter", "Administrator")">League Starter</a>
-    </div>
-</div>
 <div class="row">
-    <div class="col">
-        <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Elo
-                </th>
-                <th>
-                    Has voted?
-                </th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @if (Model.PlayerList != null)
-            {
-                foreach (var elem in Model.PlayerList)
-                {
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary btn-block" href="@Url.Action("PlayerCreator", "Administrator")">Player Creator</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary btn-block" href="@Url.Action("AchievementsCreator", "Administrator")">Achievements Creator</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary btn-block" href="@Url.Action("LeagueCreator", "Administrator")">League Creator</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary btn-block" href="@Url.Action("LeagueStarter", "Administrator")">League Starter</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
                     <tr>
-                        <td>
-                            @elem.Id
-                        </td>
-                        <td>
-                            @elem.Name
-                        </td>
-                        <td>
-                            @elem.Elo
-                        </td>
-                        <td>
-                            @elem.HasVoted
-                        </td>
-                        <td>
-                            <a asp-action="DeletePlayer" asp-route-id="@elem.Id">Delete</a>|
-                            <a asp-action="PlayerEditor" asp-route-id="@elem.Id">Edit</a>
-                        </td>
+                        <th scope="col">
+                            Id
+                        </th>
+                        <th scope="col">
+                            Name
+                        </th>
+                        <th scope="col">
+                            Elo
+                        </th>
+                        <th scope="col">
+                            Has voted?
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            }
-            </tbody>
-        </table>
-    </div>
-
-    <div class="col">
-        <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Players
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model.LeagueList != null)
-                {
-                    foreach (var elem in Model.LeagueList)
+                </thead>
+                <tbody>
+                    @if (Model.PlayerList != null)
                     {
-                        <tr>
-                            <td>
-                                @elem.Id
-                            </td>
-                            <td>
-                                @elem.Name
-                            </td>
-                            <td>
-                                @elem.Players
-                            </td>
-                            <td>
-                                <a asp-action="DeleteLeague" asp-route-id="@elem.Id">Delete</a>|
-                                <a asp-action="LeagueEditor" asp-route-id="@elem.Id">Edit</a>
-                            </td>
-                        </tr>
+                        foreach (var elem in Model.PlayerList)
+                        {
+                            <tr>
+                                <td scope="row" data-label="Id">
+                                    @elem.Id
+                                </td>
+                                <td data-label="Nick">
+                                    @elem.Name
+                                </td>
+                                <td data-label="Elo">
+                                    @elem.Elo
+                                </td>
+                                <td data-label="Has voted">
+                                    @elem.HasVoted
+                                </td>
+                                <td>
+                                    <a asp-action="DeletePlayer" asp-route-id="@elem.Id">Delete</a>|
+                                    <a asp-action="PlayerEditor" asp-route-id="@elem.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
                     }
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Format
-                    </th>
-                    <th>
-                        League
-                    </th>
-                    <th>
-                        Is finished
-                    </th>
-                    <th>
-                        Winner
-                    </th>
-                    <th>
-                        Date
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model.EventsList != null)
-                {
-                    foreach (var elem in Model.EventsList)
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-6">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+                            Id
+                        </th>
+                        <th scope="col">
+                            Name
+                        </th>
+                        <th scope="col">
+                            Players
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.LeagueList != null)
                     {
-                        <tr>
-                            <td>
-                                @elem.Id
-                            </td>
-                            <td>
-                                @elem.Format
-                            </td>
-                            <td>
-                                @elem.LeagueId
-                            </td>
-                            <td>
-                                @elem.isFinished
-                            </td>
-                            <td>
-                                @elem.Winner
-                            </td>
-                            <td>
-                                @elem.Date
-                            </td>
-                            <td>
-                                <a asp-action="DeleteEvent" asp-route-id="@elem.Id">Delete</a>|
-                                
+                        foreach (var elem in Model.LeagueList)
+                        {
+                            <tr>
+                                <td scope="row" data-label="Id">
+                                    @elem.Id
+                                </td>
+                                <td data-label="Nazwa">
+                                    @elem.Name
+                                </td>
+                                <td data-label="Gracze">
+                                    @elem.Players
+                                </td>
+                                <td data-label="Akcje">
+                                    <a asp-action="DeleteLeague" asp-route-id="@elem.Id">Delete</a>|
+                                    <a asp-action="LeagueEditor" asp-route-id="@elem.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+                            Id
+                        </th>
+                        <th scope="col">
+                            Format
+                        </th>
+                        <th scope="col">
+                            League
+                        </th>
+                        <th scope="col">
+                            Is finished
+                        </th>
+                        <th scope="col">
+                            Winner
+                        </th>
+                        <th scope="col">
+                            Date
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.EventsList != null)
+                    {
+                        foreach (var elem in Model.EventsList)
+                        {
+                            <tr>
+                                <td scope="row" data-label="Id">
+                                    @elem.Id
+                                </td>
+                                <td data-label="Format">
+                                    @elem.Format
+                                </td>
+                                <td data-label="Liga">
+                                    @elem.LeagueId
+                                </td>
+                                <td data-label="isFinished">
+                                    @elem.isFinished
+                                </td>
+                                <td data-label="Zwycięzca">
+                                    @elem.Winner
+                                </td>
+                                <td data-label="Data">
+                                    @elem.Date
+                                </td>
+                                <td data-label="Akcje">
+                                    <a asp-action="DeleteEvent" asp-route-id="@elem.Id">Delete</a>|
+
                                     <a asp-action="StartEvent" asp-route-id="@elem.Id">Start</a>|
-                                
-                                <a asp-action="CloseVoting" asp-route-id="@elem.Id">| Close Voting</a>
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="col">
-        <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Points
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model.AchievementList != null)
-                {
-                    foreach (var elem in Model.AchievementList)
-                    {
-                        <tr>
-                            <td>
-                                @elem.Id
-                            </td>
-                            <td>
-                                @elem.Name
-                            </td>
-                            <td>
-                                @elem.Points
-                            </td>
-                            <td>
-                                <a asp-action="DeleteAchievement" asp-route-id="@elem.Id">Delete</a>|
-                                <a asp-action="AchievementEditor" asp-route-id="@elem.Id">Edit</a>
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
-</div>
-</div>
 
+                                    <a asp-action="CloseVoting" asp-route-id="@elem.Id">Close Voting</a>|
+
+                                    <a asp-action="EditEvent" asp-route-id="@elem.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+                            Id
+                        </th>
+                        <th scope="col">
+                            Name
+                        </th>
+                        <th scope="col">
+                            Points
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.AchievementList != null)
+                    {
+                        foreach (var elem in Model.AchievementList)
+                        {
+                            <tr>
+                                <td scope="row" data-label="Id">
+                                    @elem.Id
+                                </td>
+                                <td data-label="Nazwa">
+                                    @elem.Name
+                                </td>
+                                <td data-label="Punkty">
+                                    @elem.Points
+                                </td>
+                                <td data-label="Akcje">
+                                    <a asp-action="DeleteAchievement" asp-route-id="@elem.Id">Delete</a>|
+                                    <a asp-action="AchievementEditor" asp-route-id="@elem.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

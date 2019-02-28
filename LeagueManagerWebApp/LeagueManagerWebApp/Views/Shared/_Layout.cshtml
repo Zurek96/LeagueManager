@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>@ViewData["Title"] - LeagueManagerWebApp</title>
 
     <environment include="Development">
@@ -15,100 +15,146 @@
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-grid.css" crossorigin="anonymous">
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-reboot.css" crossorigin="anonymous">
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.css" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+        <link rel="stylesheet" href="/lib/jQuery.menuUI-master/css/jQuery.menuUI.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css"
               asp-fallback-href="/lib/bootstrap/dist/css/bootstrap.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+        <link rel="stylesheet" href="/lib/jQuery.menuUI-master/css/jQuery.menuUI.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-primary">
-        <a class="navbar-brand" style="color:white" >League Manager</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="False" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse" id="collapsibleNavbar">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">Strona główna </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Player" asp-action="Index">Twoje statystyki</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Achievement" asp-action="Index">Osiągnięcia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="League" asp-action="Index">Wyniki ligi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Event" asp-action="Index">Terminarz i głosowanie</a>
-                </li>
-                @if (User.IsInRole("Admin"))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Administrator" asp-action="Index">Administrator</a>
+    <nav id="menuUI" class="btn navbar navbar-default sidebar position-fixed" style="background-image: linear-gradient(to bottom, #111 0%, #f8f8f8 100%);" role="navigation">
+        <div class="main container-fluid" style="margin-left:0px">
+            <div class="navbar-header">
+                <a class="navbar-header ">League Manager</a>
+            </div>
+            <br />
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav ">
+                    <li>
+                        <i class="fas fa-home pull-left"></i><a class="btn" asp-controller="Home" asp-action="Index">Strona główna </a>
                     </li>
-                }
+                    <li>
+                        <i class="fas fa-book pull-left"></i><a class="btn" asp-action="Formats" asp-controller="Home">Formaty</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-book pull-left"></i><a class="btn" asp-action="Rules" asp-controller="Home">Zasady</a>
+                    </li>
 
+                    <li>
+                        <i class="fas fa-chart-bar pull-left"></i><a class="btn pull-left" asp-controller="Player" asp-action="Index">Twoje statystyki</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-trophy pull-left"></i><a class="btn pull-left" asp-controller="Achievement" asp-action="Index">Osiągnięcia</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-star pull-left"></i><a class="btn" asp-controller="League" asp-action="Index">Wyniki ligi</a>
+                    </li>
+                    <li>
+                        <i class="far fa-calendar-alt pull-left"></i><a class="btn" asp-controller="Event" asp-action="Index">Terminarz </a>
+                    </li>
 
-            </ul>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="form-inline">
-                           
-                    
-                    
-                        <button type="submit" class="btn btn-link nav-link ">Logout</button>
-                    
-                            
-                </form>
-            }
-            else
-            {
-                        
-                <a class="nav-item" asp-area="Identity" asp-page="/Account/Login">Login</a>              
-            }
-            
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <i class="fas fa-tools pull-left"></i><a class="btn" asp-controller="Administrator" asp-action="Index">Administrator</a>
+                        </li>
+                    }
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})" method="post" id="logoutForm" class="form-inline">
+
+                                <i class="fas fa-sign-out-alt"></i><button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <i class="fas fa-sign-in-alt"></i><a asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - LeagueManagerWebApp</p>
-        </footer>
-    </div>
+<partial name="_CookieConsentPartial"/>
+<div class="main container-fluid ">
+    @RenderBody()
+    <hr/>
+</div>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/lib/jquery/dist/jquery.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+<script>
+    json = {
+        brand: 'Menu UI',
+        menu: [
+            { id: 'home', value: 'Home', icon: 'fa fa-home' },
+            { id: 'profile', value: 'Profile', icon: 'glyphicon glyphicon-user' },
+            { id: 'message', value: 'Message', icon: 'glyphicon glyphicon-envelope' },
+            {
+                id: 'setting',
+                value: 'Setting',
+                icon: 'glyphicon glyphicon-cog',
+                submenu: [
+                    { id: 'preference', value: 'Preference' }, { id: 'theme', value: 'Theme' },
+                    { id: 'help', value: 'Help' }
+                ]
+            }
+        ]
+    }
+    $("#menuUI").menuUI(json, callBack);
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('sw.js')
+            .then(function() { console.log("Service Worker Registered"); });
+    }
+</script>
+<environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery.menuUI-master/js/jQuery.menuUI.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</environment>
+<environment exclude="Development">
+    <script src="~/lib/jquery/dist/jquery.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="">
+    </script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery.menuUI-master/js/jQuery.menuUI.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</environment>
 
-    @RenderSection("Scripts", required: false)
+@RenderSection("Scripts", required: false)
 </body>
 </html>

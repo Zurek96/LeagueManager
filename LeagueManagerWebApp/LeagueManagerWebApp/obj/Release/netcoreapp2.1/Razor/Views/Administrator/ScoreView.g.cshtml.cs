@@ -67,7 +67,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n<h2>ScoreView</h2>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row justify-content-center\">\r\n        ");
             EndContext();
             BeginContext(253, 914, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e84d5c99c40438ba4d13f1accc90382", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cc77114d4ddb437ca3009d910bc94b74", async() => {
                 BeginContext(335, 300, true);
                 WriteLiteral(@"
             <div class=""container-fluid"">
@@ -89,7 +89,7 @@ using LeagueManagerWebApp.Models;
                 WriteLiteral("                                ");
                 EndContext();
                 BeginContext(764, 50, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "923cfd78227e47259f4ed5b2eb60c75a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "933b554f71f84d95b939dd649bf5e506", async() => {
                     BeginContext(795, 9, false);
 #line 20 "C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\Views\Administrator\ScoreView.cshtml"
                                                          Write(elem.Name);
@@ -274,7 +274,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n                          </td>\r\n                          <td>\r\n                              ");
             EndContext();
             BeginContext(2858, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "80e4aae010a747d48bcfdf0c04113f36", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24f9575025a0467a81a444d5b69c287b", async() => {
                 BeginContext(2912, 11, true);
                 WriteLiteral("Score sheet");
                 EndContext();

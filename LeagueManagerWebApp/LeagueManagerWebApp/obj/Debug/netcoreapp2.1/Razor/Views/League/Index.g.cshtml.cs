@@ -64,12 +64,12 @@ using LeagueManagerWebApp.Models;
 #line default
 #line hidden
             BeginContext(69, 587, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cfd7dff889514ca3bb238a67249f8b7a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4ce3abbd90245779e7de9188482c0fd", async() => {
                 BeginContext(75, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(81, 566, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5c73352ccc9e472689c89368554974d8", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a63315c40c24790ae3de2cb0e151366", async() => {
                     BeginContext(125, 221, true);
                     WriteLiteral("\r\n        <div class=\"row \">\r\n            <div class=\"col\">\r\n                Wybierz ligę której Wyniki chcesz zobaczyć:\r\n            </div>\r\n            <div class=\"col\">\r\n                <select id=\"Name\" name=\"Name\">\r\n");
                     EndContext();
@@ -83,7 +83,7 @@ using LeagueManagerWebApp.Models;
                     WriteLiteral("                        ");
                     EndContext();
                     BeginContext(443, 46, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39418073b67d49b1bf39559c2540953e", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97bbec9ef38243328497c0644fce4c19", async() => {
                         BeginContext(471, 9, false);
 #line 16 "C:\Users\MZurowsk\source\repos\LeagueManagerWebApp\LeagueManagerWebApp\Views\League\Index.cshtml"
                                               Write(elem.Name);

@@ -68,7 +68,7 @@ using LeagueManagerWebApp.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(99, 1150, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb0b0b31ae724e4d91e1ae43f5d88277", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d364276997384ee09041969f28f4470f", async() => {
                 BeginContext(105, 363, true);
                 WriteLiteral(@"
     <h2>CreatePlayer</h2>
@@ -83,7 +83,7 @@ using LeagueManagerWebApp.Models;
             ");
                 EndContext();
                 BeginContext(468, 744, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6579af4ff60445d4bd6ea7ba3bd6b49b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5c14db297cf43638954c74b4f5719db", async() => {
                     BeginContext(538, 667, true);
                     WriteLiteral(@"
                 <div class=""container-fluid"">

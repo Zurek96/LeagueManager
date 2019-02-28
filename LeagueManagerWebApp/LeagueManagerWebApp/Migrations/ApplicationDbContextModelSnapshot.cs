@@ -36,6 +36,29 @@ namespace LeagueManagerWebApp.Data.Migrations
                     b.ToTable("AchievementModel");
                 });
 
+            modelBuilder.Entity("LeagueManagerWebApp.Models.DailyCardModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CHpath");
+
+                    b.Property<string>("CMpath");
+
+                    b.Property<string>("ImgPath");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("ReleaseDate");
+
+                    b.Property<string>("TCGpath");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DailyCard");
+                });
+
             modelBuilder.Entity("LeagueManagerWebApp.Models.EventModel", b =>
                 {
                     b.Property<int>("Id")
@@ -53,6 +76,8 @@ namespace LeagueManagerWebApp.Data.Migrations
                     b.Property<string>("Winner");
 
                     b.Property<bool>("isFinished");
+
+                    b.Property<bool>("isVotingFinished");
 
                     b.HasKey("Id");
 

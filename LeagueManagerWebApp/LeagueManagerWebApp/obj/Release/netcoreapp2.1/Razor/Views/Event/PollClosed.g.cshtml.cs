@@ -63,7 +63,7 @@ using LeagueManagerWebApp.Models;
 #line default
 #line hidden
             BeginContext(95, 417, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a3c28e357e164004810cf2e310e36a4c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f11d1a41933b47868121c99730d22b11", async() => {
                 BeginContext(101, 284, true);
                 WriteLiteral(@"
 <div class=""container"">
@@ -81,7 +81,7 @@ using LeagueManagerWebApp.Models;
                 ");
                 EndContext();
                 BeginContext(385, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1021c7c51aae4708bc22d4caae218b14", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dfdebf3fb385415e8d8ee8eb43239736", async() => {
                     BeginContext(441, 4, true);
                     WriteLiteral("Back");
                     EndContext();

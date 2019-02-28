@@ -31,6 +31,7 @@ namespace LeagueManagerWebApp.Services
             await context.SaveChangesAsync();
             return null;
         }
+
         public async Task<int> CreateLeague(LeagueModel model, ApplicationDbContext context)
         {
             if (context.PlayerModel.ToList().Count == 1)
@@ -41,6 +42,7 @@ namespace LeagueManagerWebApp.Services
             await context.SaveChangesAsync();
             return 0;
         }
+
         public async Task<IActionResult> EditPlayer(PlayerModel model, ApplicationDbContext context)
         {
             var original = context.PlayerModel.Find(model.Id);
@@ -65,11 +67,11 @@ namespace LeagueManagerWebApp.Services
                 original.HasVoted = model.HasVoted;
             }
 
-
             context.PlayerModel.Update(original);
             await context.SaveChangesAsync();
             return null;
         }
+
         public async Task<IActionResult> EditAchievement(AchievementModel model, ApplicationDbContext context)
         {
             var original = context.AchievementModel.Find(model.Id);
@@ -85,6 +87,7 @@ namespace LeagueManagerWebApp.Services
             await context.SaveChangesAsync();
             return null;
         }
+
         public async Task<IActionResult> EditLeague(LeagueModel model, ApplicationDbContext context)
         {
             var original = context.LeagueModel.Find(model.Id);
@@ -96,6 +99,30 @@ namespace LeagueManagerWebApp.Services
             await context.SaveChangesAsync();
             return null;
         }
+
+        public async Task<IActionResult> EditEvent(EventModel model, ApplicationDbContext context)
+        {
+            var original = context.EventModel.Find(model.Id);
+            if (model.Winner != original.Winner)
+            {
+                original.Winner = model.Winner;
+            }
+
+            if (model.Date != original.Date && model.Date > DateTime.Now.Subtract(TimeSpan.FromDays(30)))
+            {
+                original.Date = model.Date;
+            }
+
+            if (model.isFinished)
+            {
+                original.isFinished = true;
+            }
+
+            context.EventModel.Update(original);
+            await context.SaveChangesAsync();
+            return null;
+        }
+
         public IActionResult DeletePlayer(int? id, ApplicationDbContext context)
         {
             var model = context.PlayerModel.Find(id);
@@ -104,6 +131,7 @@ namespace LeagueManagerWebApp.Services
             context.SaveChanges();
             return null;
         }
+
         public IActionResult DeleteLeague(int? id, ApplicationDbContext context)
         {
             var model = context.LeagueModel.Find(id);
@@ -117,6 +145,7 @@ namespace LeagueManagerWebApp.Services
             context.SaveChanges();
             return null;
         }
+
         public IActionResult DeleteAchievement(int? id, ApplicationDbContext context)
         {
             var model = context.AchievementModel.Find(id);
@@ -125,6 +154,7 @@ namespace LeagueManagerWebApp.Services
             context.SaveChanges();
             return null;
         }
+
         public IActionResult DeleteEvent(int? id, ApplicationDbContext context)
         {
             var model = context.EventModel.Find(id);
@@ -133,8 +163,8 @@ namespace LeagueManagerWebApp.Services
             {
                 context.VotingModel.Remove(elem);
             }
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT(VotingModel, RESEED, "+context.VotingModel.ToList().Count+")");
-            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT(EventModel, RESEED, "+context.EventModel.ToList().Count + ")");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT(VotingModel, RESEED, " + context.VotingModel.ToList().Count + ")");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT(EventModel, RESEED, " + context.EventModel.ToList().Count + ")");
 
             context.Database.ExecuteSqlCommand("DBCC CHECKIDENT(MatchupModel, RESEED, " + context.MatchupModel.ToList().Count + ")");
             foreach (var elem in context.PlayerModel.ToList())
@@ -144,6 +174,7 @@ namespace LeagueManagerWebApp.Services
             context.SaveChanges();
             return null;
         }
+
         public IActionResult StartLeague(LeagueModel model, ApplicationDbContext context)
         {
             var starter = context.LeagueModel.ToList().First(a => a.Name == model.Name);
@@ -178,6 +209,7 @@ namespace LeagueManagerWebApp.Services
 
             return null;
         }
+
         public IActionResult SubmitScore(MatchupModel model, ApplicationDbContext context)
         {
             var S1 = 1;
@@ -240,6 +272,7 @@ namespace LeagueManagerWebApp.Services
 
             return null;
         }
+
         public EventViewModel StartEvent(int? id, ApplicationDbContext context)
         {
             var viewModel = new EventViewModel();
@@ -247,11 +280,12 @@ namespace LeagueManagerWebApp.Services
             var league = context.LeagueModel.First(a => a.Id == model.LeagueId);
             foreach (var elem in league.Players.Split(','))
             {
-                viewModel.Players.Add(context.PlayerModel.First(a=>a.Name==elem));
+                viewModel.Players.Add(context.PlayerModel.First(a => a.Name == elem));
             }
             viewModel.Event = model;
             return viewModel;
         }
+
         public IActionResult CloseVoting(int? id, ApplicationDbContext context)
         {
             var Event = context.EventModel.Find(id);
@@ -286,13 +320,15 @@ namespace LeagueManagerWebApp.Services
                     }
                 }
 
+                voting.Winner = Event.Format.ToString();
+                Event.isVotingFinished = true;
                 voting.IsOpened = false;
                 context.VotingModel.Update(voting);
                 context.EventModel.Update(Event);
                 context.SaveChanges();
-
             }
 
             return null;
-        }    }
+        }
+    }
 }

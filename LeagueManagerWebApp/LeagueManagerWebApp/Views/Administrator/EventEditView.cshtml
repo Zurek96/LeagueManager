@@ -1,0 +1,54 @@
+﻿@model EventModel
+@{ 
+    ViewData["Title"] = "EventEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function() {
+        $("#ui-datepicker").datepicker();
+    });
+</script>
+<body>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form asp-controller="Administrator" asp-action="EditEvent" method="post">
+            <input type="hidden" value="@Model.Id" name="Id" />
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        Winner: <br />
+                    </div>
+                    <div class="col">
+                        <input type="text" name="Winner" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        Date: <br />
+                    </div>
+                    <div class="col">
+                        <input name="Date" id="ui-datepicker"/>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        Finished <br />
+                    </div>
+                    <div class="col">
+                        @Html.CheckBoxFor(m=>m.isFinished)
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <input type="submit" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>

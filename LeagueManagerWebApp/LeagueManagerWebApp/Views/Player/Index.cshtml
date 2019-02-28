@@ -5,82 +5,82 @@
 }
 
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h2 class="text-left display-4">Nick: @Model.Name</h2> <br/>
-            <h3 class="text-left display-4">Elo: @Model.Elo</h3> <br>
-            @if (Model.MatchesPlayed != 0)
-            {
-                <h3 class="text-left display-4">% zwycięstw: @(Model.MatchesWon * 100 / Model.MatchesPlayed) %</h3>
-                <br>
-            }
-            else
-            {
-                <h3 class="text-left">% zwycięstw: 0%</h3>
-            }
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-left display-4">Nick: @Model.Name</h2> <br />
+                <h3 class="text-left display-4">Elo: @Model.Elo</h3> <br>
+                @if (Model.MatchesPlayed != 0)
+                {
+                    <h3 class="text-left display-4">% zwycięstw: @(Model.MatchesWon * 100 / Model.MatchesPlayed) %</h3>
+                    <br>
+                }
+                else
+                {
+                    <h3 class="text-left">% zwycięstw: 0%</h3>
+                }
+            </div>
+            <br />
+            <div class="col">
+                <h3 class="text-left display-4">Rozegrane: @Model.MatchesPlayed</h3> <br>
+                <h3 class="text-left display-4">Zwycięstwa: @Model.MatchesWon</h3> <br>
+                <h3 class="text-left display-4">Porażki: @Model.MatchesLost</h3> <br>
+                <h3 class="text-left display-4">Remisy: @Model.Draws</h3> <br />
+            </div>
         </div>
-        <br/>
-        <div class="col">
-            <h3 class="text-left display-4">Rozegrane: @Model.MatchesPlayed</h3> <br>
-            <h3 class="text-left display-4">Zwycięstwa: @Model.MatchesWon</h3> <br>
-            <h3 class="text-left display-4">Porażki: @Model.MatchesLost</h3> <br>
-            <h3 class="text-left display-4">Remisy: @Model.Draws</h3> <br/>
-            
+        <div class="row">
+            <div class="col">
+                <h4 class="display-4">Historia gier: </h4>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h4 class="display-4">Historia gier: </h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            @if (Model.MatchesPlayed > 0)
-            {
-                <table class="table table-bordered table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>
-                                Player 1
-                            </th>
-                            <th>
-                                Player 2
-                            </th>
-                            <th>
-                                Zwycięzca
-                            </th>
-                            <th>
-                                Data
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model.MatchupsHistory != null)
-                        {
-                            foreach (var elem in Model.MatchupsHistory)
-                            {
+        <div class="row">
+            <div class="col">
+                @if (Model.MatchesPlayed > 0)
+                {
+                    <div style="overflow-x:auto">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead class="thead-dark">
                                 <tr>
-                                    <td>
-                                        @elem.Player1
-                                    </td>
-                                    <td>
-                                        @elem.Player2
-                                    </td>
-                                    <td>
-                                        @elem.Winner
-                                    </td>
-                                    <td>
-                                        @elem.Date.ToShortDateString()
-                                    </td>
+                                    <th scope="col">
+                                        Player 1
+                                    </th>
+                                    <th scope="col">
+                                        Player 2
+                                    </th>
+                                    <th scope="col">
+                                        Zwycięzca
+                                    </th>
+                                    <th scope="col">
+                                        Data
+                                    </th>
                                 </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-
-            }
+                            </thead>
+                            <tbody>
+                                @if (Model.MatchupsHistory != null)
+                                {
+                                    foreach (var elem in Model.MatchupsHistory)
+                                    {
+                                        <tr>
+                                            <td scope="row" data-label="Gracz 1">
+                                                @elem.Player1
+                                            </td>
+                                            <td data-label="Gracz 2">
+                                                @elem.Player2
+                                            </td>
+                                            <td data-label="Zwycięzca">
+                                                @elem.Winner
+                                            </td>
+                                            <td data-label="Data">
+                                                @elem.Date.ToShortDateString()
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</div>
 </body>

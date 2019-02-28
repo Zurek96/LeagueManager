@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "62d86d3b6562a0e5c12d59f458955f018aa19ed3"
+    "signature": "27a174712785b976f05f36180f9bf020e3c41b4f"
   },
   "compilationOptions": {
     "defines": [
@@ -24,11 +24,15 @@
     ".NETCoreApp,Version=v2.1": {
       "LeagueManagerWebApp/1.0.0": {
         "dependencies": {
+          "Bower": "1.3.11",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.0.1916590",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
-          "bootstrap": "4.2.1"
+          "Modernizr.New": "3.4.0",
+          "Node.js": "5.3.0",
+          "bootstrap": "4.2.1",
+          "jQuery": "3.3.1"
         },
         "runtime": {
           "LeagueManagerWebApp.dll": {}
@@ -39,11 +43,17 @@
       },
       "bootstrap/4.2.1": {
         "dependencies": {
-          "jQuery": "3.0.0",
+          "jQuery": "3.3.1",
           "popper.js": "1.14.0"
         }
       },
-      "jQuery/3.0.0": {},
+      "Bower/1.3.11": {
+        "dependencies": {
+          "NoGit": "0.0.8",
+          "Node.js": "5.3.0"
+        }
+      },
+      "jQuery/3.3.1": {},
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "2.8.0",
@@ -366,9 +376,16 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "Modernizr.New/3.4.0": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0"
+        }
+      },
+      "Node.js/5.3.0": {},
+      "NoGit/0.0.8": {
+        "dependencies": {
+          "Node.js": "5.3.0"
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -3481,12 +3498,19 @@
       "path": "bootstrap/4.2.1",
       "hashPath": "bootstrap.4.2.1.nupkg.sha512"
     },
-    "jQuery/3.0.0": {
+    "Bower/1.3.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FXANjZia/vux9/ObNiPwh2zNWuzcgHMKXia1OQrviuf0OKPBWB2TBIVAICgtObuzEW+XLyaBEoVuOUlMXy0kNA==",
-      "path": "jquery/3.0.0",
-      "hashPath": "jquery.3.0.0.nupkg.sha512"
+      "sha512": "sha512-sud24T1cWywjBkTGk7bcbTiDqUaGgC2AaXMI7/3pYjo/nYJr69M7sZm0/Nl7o+v2d1YnBpAUlye4GgZdfVWQKQ==",
+      "path": "bower/1.3.11",
+      "hashPath": "bower.1.3.11.nupkg.sha512"
+    },
+    "jQuery/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Emsts1D6E2AgHVBm4cTD2dxoRyWVG+3zK1x8mYbf+k6aAArPTXHR2Ip++o1utlNbmYIzaPFnhGw3YDexp8PjlQ==",
+      "path": "jquery/3.3.1",
+      "hashPath": "jquery.3.3.1.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",
@@ -3607,12 +3631,33 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.1",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.1.nupkg.sha512"
     },
+    "Modernizr.New/3.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V6cjazIjd6TWXfARlAB85zy6uXz7OKJQ4VbzUN54lMqwG9UkLXd2V/q4cdwcjizd92AHHSHi5npbsRjnxqv5Zw==",
+      "path": "modernizr.new/3.4.0",
+      "hashPath": "modernizr.new.3.4.0.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Node.js/5.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Roya+jxXTm62W6Oo6e/L1+BuD5hq+HLi4Zk1RUbNfb7eR7O1Qa7iYUuLfZRFOkXfWopWW/yYoK9n4x524ROo/A==",
+      "path": "node.js/5.3.0",
+      "hashPath": "node.js.5.3.0.nupkg.sha512"
+    },
+    "NoGit/0.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cTYmzdGpVt3siVhsPhcz08NjQs1cDx+MjML+ysLSl15xypvBQRtJcF4XjiRx8oRHUKG8LXtXV4HUOcLCWJUOMQ==",
+      "path": "nogit/0.0.8",
+      "hashPath": "nogit.0.0.8.nupkg.sha512"
     },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",

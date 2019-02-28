@@ -1,93 +1,86 @@
-﻿@{
+﻿@model DailyCardModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <body>
-<div class="container">
-    <div class="row ">
-        <h1 class="display-3">Hello</h1>
-    </div>
-    <br />
-    <div class="row">
-        <p>
-            Witam na portalu do zarządzania ligą. Poniżej znajdują się przydatne linki:
-        </p>
-    </div>
-    <br />
-  
-    <div class="row">
-        <div class="col">
-            <div class="card" style="width: 80%; ">
-                <img src="/images/rules.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Zasady</h5>
-                    <p class="card-text">Zasady uczestnictwa, punktowania oraz grania w lidze.</p>
-                    <a class="btn btn-primary btn-block"  asp-action="Rules">Zasady</a>
-                </div>
-            </div>
-        </div>
+    <div class="container" style="margin-left: 10%">
 
-        <div class="col">
-            <div class="card" style="width: 80%; ">
-                <img src="/images/formats.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Formaty</h5>
-                    <p class="card-text">Lista formatów wraz z opisami.</p>
-                    <a class="btn btn-primary btn-block" asp-action="Formats">Formaty</a>
-                </div>
-            </div>
+        <div class="row ">
+            <h1 class="display-3">Hello</h1>
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col">
-            <div class="card" style="width: 80%;">
-                <img src="/images/terminarz.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Terminarz</h5>
-                    <p class="card-text">Lista spotkań przeprowadzonych w ramach ligi, przeszłych i przyszłych.</p>
-                    <a class="btn btn-primary btn-block" asp-controller="Event" asp-action="Index">Terminarz</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col">
-            <div class="card" style="width: 80%;">
-                <img src="/images/stats.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Twoje statystyki</h5>
-                    <p class="card-text">Twoje statystyki w lidze.</p>
-                    <a class="btn btn-primary btn-block" asp-controller="Player" asp-action="Index">Twoje statystyki</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col">
-            <div class="card" style="width: 80%;">
-                <img src="/images/rank.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Ranking</h5>
-                    <p class="card-text">Wyniki ligi.</p>
-                    <a class="btn btn-primary btn-block" asp-controller="League" asp-action="Index">Ranking</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col">
-            <div class="card" style="width: 80%;">
-                <img src="/images/ach.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Osiągnięcia</h5>
-                    <p class="card-text">Lista osiągnięć oraz ranking.</p>
-                    <a class="btn btn-primary btn-block" asp-controller="Achievement" asp-action="Index">Osiągnięcia</a>
-                </div>
-            </div>
-        </div>
-    </div>
         <br />
-</div>
+        <div class="row">
+            <p>
+                Witam na portalu. Poniżej losowa karta, linki znajdują się w menu po lewej.
+            </p>
+        </div>
+    </div>
+    @if (Model == null)
+    {
+        <p>
+            Czekam na kartę...
+        </p>
+    }
+    else
+    {
+        <div class="container" style="margin-left: 10%">
+            <div class="row">
+                <div class="col-6 col-sm-6">
+                    <table class="table table-bordered table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td scope="row">
+                                    <strong>Nazwa</strong>
+                                </td>
+                                <td scope="row">
+                                    @Model.Name
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Data wydania</strong>
+                                </td>
+                                <td>
+                                    @Model.ReleaseDate
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Cena</strong>
+                                </td>
+                                <td>
+                                    <p>@Model.price &euro;</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Link do decku:</strong>
+                                </td>
+                                <td>
+                                    <a href="@Model.deckPath"> @Model.deckPath</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Linki do kupienia:</strong>
+                                </td>
+                                <td>
+                                    <a href="@Model.TCGpath">@Model.TCGpath </a><br /> <br />
+                                    <a href="@Model.CMpath">
+                                        @Model.CMpath
+                                    </a><br /> <br />
+                                    <a href="@Model.CHpath">@Model.CHpath</a> <br /> <br />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6 col-sm-6">
+                    <img class="img" src="@Model.ImgPath" />
+                </div>
+            </div>
+        </div>
+
+    }
 </body>
